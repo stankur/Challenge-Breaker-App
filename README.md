@@ -1,6 +1,6 @@
-# Steps of Steps
+# Challenge Breaker
 
-## Why can't steps have steps?
+## Break down your challenges!
 
 ---
 
