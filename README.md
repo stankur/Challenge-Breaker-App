@@ -8,12 +8,14 @@ We humans love solving challenges. It is how we progress. Solving our own challe
 that we are equipped to fight the things we fear. It gives us courage to walk 
 into the dark with trust in perseverance. 
 
-***What push people who love challenges away from challenges?***
+***How do we tackle challenges?***
 
-- the challenge might be not challenging enough to be interesting
-- the challenge might seem unsolvable
+- if we are sure that we are equipped to solve the challenge, we 
+immediately solve it.
 
-This project aims to structure challenge into a form where users
-could get a broad overview of the steps to be taken, and get more
-detailed steps when they feel lost and confused.
+- if the challenge seem to big, we break them down into smaller
+pieces
+
+This project aims to help users break down their challenges into smaller
+and more manageable pieces.
 
