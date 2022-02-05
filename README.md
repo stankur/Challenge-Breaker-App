@@ -19,3 +19,10 @@ pieces
 This project aims to help users break down their challenges into smaller
 and more manageable pieces.
 
+What you'll be able to do with **Challenge Breaker**:
+
+- "step into" existing challenges and view the elaborated mini challenges
+- "step out" of mini elaborated challenges to a bigger
+- add more elaborated mini challenges to current challenges
+- remove existing challenges
+- update existing challenges
