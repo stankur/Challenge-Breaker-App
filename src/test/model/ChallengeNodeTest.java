@@ -87,21 +87,36 @@ class ChallengeNodeTest {
         ChallengeNode challenge1 = new ChallengeNode("obtain", "buy the instant ramen");
         ChallengeNode challenge2 = new ChallengeNode("cook", "prepare the instant ramen for serving");
         ChallengeNode challenge3 = new ChallengeNode("consume", "eat the ramen");
+        ChallengeNode challenge4 = new ChallengeNode("dummy", "some dummy");
 
         testChallengeNode.addElaboratedMiniChallenge(challenge1);
         testChallengeNode.addElaboratedMiniChallenge(challenge2);
         testChallengeNode.addElaboratedMiniChallenge(challenge3);
+        testChallengeNode.addElaboratedMiniChallenge(challenge4);
 
         testChallengeNode.changePosition(0, 0);
         assertEquals(challenge1, testChallengeNode.getElaboratedMiniChallenges().get(0));
+        assertEquals(challenge2, testChallengeNode.getElaboratedMiniChallenges().get(1));
+        assertEquals(challenge3, testChallengeNode.getElaboratedMiniChallenges().get(2));
+        assertEquals(challenge4, testChallengeNode.getElaboratedMiniChallenges().get(3));
 
         testChallengeNode.changePosition(0, 1);
-        assertEquals(challenge1, testChallengeNode.getElaboratedMiniChallenges().get(1));
         assertEquals(challenge2, testChallengeNode.getElaboratedMiniChallenges().get(0));
+        assertEquals(challenge1, testChallengeNode.getElaboratedMiniChallenges().get(1));
+        assertEquals(challenge3, testChallengeNode.getElaboratedMiniChallenges().get(2));
+        assertEquals(challenge4, testChallengeNode.getElaboratedMiniChallenges().get(3));
 
         testChallengeNode.changePosition(0, 2);
-        assertEquals(challenge2, testChallengeNode.getElaboratedMiniChallenges().get(2));
         assertEquals(challenge1, testChallengeNode.getElaboratedMiniChallenges().get(0));
+        assertEquals(challenge3, testChallengeNode.getElaboratedMiniChallenges().get(1));
+        assertEquals(challenge2, testChallengeNode.getElaboratedMiniChallenges().get(2));
+        assertEquals(challenge4, testChallengeNode.getElaboratedMiniChallenges().get(3));
+
+        testChallengeNode.changePosition(3, 1);
+        assertEquals(challenge1, testChallengeNode.getElaboratedMiniChallenges().get(0));
+        assertEquals(challenge4, testChallengeNode.getElaboratedMiniChallenges().get(1));
+        assertEquals(challenge3, testChallengeNode.getElaboratedMiniChallenges().get(2));
+        assertEquals(challenge2, testChallengeNode.getElaboratedMiniChallenges().get(3));
     }
 
     @Test
@@ -122,6 +137,33 @@ class ChallengeNodeTest {
 
         testChallengeNode.editDescription("lorem ipsum");
         assertEquals("lorem ipsum", testChallengeNode.getDescription());
+    }
+
+    @Test
+    void testGetName() {
+        assertEquals("eat instant ramen" ,testChallengeNode.getName());
+    }
+
+    @Test
+    void testGetDescription() {
+        assertEquals("strategy break-down to eating instant ramen", testChallengeNode.getDescription());
+    }
+
+    @Test
+    void testGetElaboratedMiniChallenges() {
+        ChallengeNode challenge1 = new ChallengeNode("obtain", "buy the instant ramen");
+        ChallengeNode challenge2 = new ChallengeNode("cook", "prepare the instant ramen for serving");
+        ChallengeNode challenge3 = new ChallengeNode("consume", "eat the ramen");
+
+        testChallengeNode.addElaboratedMiniChallenge(challenge1);
+        testChallengeNode.addElaboratedMiniChallenge(challenge2);
+        testChallengeNode.addElaboratedMiniChallenge(challenge3);
+
+        assertEquals(3, testChallengeNode.getElaboratedMiniChallenges().size());
+        assertEquals(challenge1, testChallengeNode.getElaboratedMiniChallenges().get(0));
+        assertEquals(challenge2, testChallengeNode.getElaboratedMiniChallenges().get(1));
+        assertEquals(challenge3, testChallengeNode.getElaboratedMiniChallenges().get(2));
+
     }
 
 
