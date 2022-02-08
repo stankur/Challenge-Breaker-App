@@ -17,7 +17,7 @@ public class ChallengeBreakerApp {
     }
 
     // MODIFIES: this
-    void runChallengeBreaker() {
+    private void runChallengeBreaker() {
         boolean running = true;
 
         init();
@@ -43,7 +43,7 @@ public class ChallengeBreakerApp {
 
     // MODIFIES: this
     // EFFECTS: initializes Challenge
-    void init() {
+    private void init() {
         ChallengeNode templateChallenge = new ChallengeNode(
                 "template challenge",
                 "template description"
@@ -54,13 +54,13 @@ public class ChallengeBreakerApp {
     }
 
     // EFFECTS: displays challenge information and user's options
-    void onChallengeNodeViewing(ChallengeNode challenge) {
+    private void onChallengeNodeViewing(ChallengeNode challenge) {
         displayChallengeNodeInfo(challenge);
         displayChallengeNodeOptions();
     }
 
     // EFFECTS: displays challenge node info
-    void displayChallengeNodeInfo(ChallengeNode challenge) {
+    private void displayChallengeNodeInfo(ChallengeNode challenge) {
         String name = challenge.getName();
         String description = challenge.getDescription();
         System.out.println("challenge information \n");
@@ -72,7 +72,7 @@ public class ChallengeBreakerApp {
     }
 
     // EFFECTS: displays horizontal break
-    void displayHorizontalBreak() {
+    private void displayHorizontalBreak() {
         System.out.println("------------------------------------------------------------------");
     }
 
@@ -90,7 +90,7 @@ public class ChallengeBreakerApp {
     }
 
     // EFFECTS: displays challenge node options
-    void displayChallengeNodeOptions() {
+    private void displayChallengeNodeOptions() {
         System.out.println("enter: \n");
         System.out.println("n to edit challenge name");
         System.out.println("d to edit challenge description\n");
@@ -104,7 +104,7 @@ public class ChallengeBreakerApp {
 
     // MODIFIES: this
     // EFFECTS: reads user's command and give appropriate responses
-    void processCommand(String command) {
+    private void processCommand(String command) {
         if (command.equals("n")) {
             onNameEditRequest(currentChallenge);
         } else if (command.equals("d")) {
@@ -126,7 +126,7 @@ public class ChallengeBreakerApp {
 
     // MODIFIES: challenge
     // EFFECTS: sets given challenge's name to input given by user
-    void onNameEditRequest(ChallengeNode challenge) {
+    private void onNameEditRequest(ChallengeNode challenge) {
         System.out.println("current name: " + challenge.getName());
         System.out.println("please enter the new name.");
         String newName = input.nextLine();
@@ -136,7 +136,7 @@ public class ChallengeBreakerApp {
 
     // MODIFIES: challenge
     // EFFECTS: sets given challenge's description to input given by user
-    void onDescriptionEditRequest(ChallengeNode challenge) {
+    private void onDescriptionEditRequest(ChallengeNode challenge) {
         System.out.println("current description: " + challenge.getDescription());
         System.out.println("please enter the new description");
         String newDesc = input.nextLine();
@@ -146,7 +146,7 @@ public class ChallengeBreakerApp {
 
     // MODIFIES: challenge
     // EFFECTS: adds a new elaborated mini challenge with name and description provided by user to given challenge
-    void onAddRequest(ChallengeNode challenge) {
+    private void onAddRequest(ChallengeNode challenge) {
         System.out.println("please enter the name of the challenge that you would like to add");
         String newChallengeName = input.nextLine();
 
@@ -164,7 +164,7 @@ public class ChallengeBreakerApp {
     // MODIFIES: challenge
     // EFFECTS: removes an elaborated mini challenge of index specified by user from given challenge if exists
     // otherwise displays out of range message
-    void onRemoveRequest(ChallengeNode challenge) {
+    private void onRemoveRequest(ChallengeNode challenge) {
         System.out.println("current mini elaborated challenges: \n");
         displayMiniElaboratedChallenges(challenge);
         System.out.println("\nplease enter the number of the challenge to be removed");
@@ -189,7 +189,7 @@ public class ChallengeBreakerApp {
     // MODIFIES: challenge
     // EFFECTS: moves an elaborated mini challenge from a position specified by user to a position specified by user
     // or displays out of range message
-    void onMoveRequest(ChallengeNode challenge) {
+    private void onMoveRequest(ChallengeNode challenge) {
         System.out.println("current mini elaborated challenges: \n");
         displayMiniElaboratedChallenges(challenge);
 
@@ -217,7 +217,7 @@ public class ChallengeBreakerApp {
 
     // MODIFIES: this
     // EFFECTS: adds current challenge to visited layer and make the challenge specified by user to be current challenge
-    void onStepInRequest() {
+    private void onStepInRequest() {
         System.out.println("current mini elaborated : \n");
         displayMiniElaboratedChallenges(this.currentChallenge);
         System.out.println("\nplease enter the number of the challenge to step into");
@@ -239,7 +239,7 @@ public class ChallengeBreakerApp {
     // MODIFIES: this
     // EFFECTS: sets currentLayer to direct outer layer of current challenge and removes last element of
     // visited layers if exists otherwise displays could not exit further message
-    void onExitRequest() {
+    private void onExitRequest() {
         int lastIndex = this.visitedLayers.size() - 1;
 
         if (lastIndex < 0) {
