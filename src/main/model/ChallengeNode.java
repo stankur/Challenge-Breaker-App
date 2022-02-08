@@ -38,7 +38,16 @@ public class ChallengeNode {
     public void changePosition(int oldIndex, int newIndex) {
         ChallengeNode toBeMoved = this.elaboratedMiniChallenges.get(oldIndex);
         this.elaboratedMiniChallenges.remove(oldIndex);
-        this.elaboratedMiniChallenges.add(newIndex, toBeMoved);
+
+        ArrayList<ChallengeNode> newArray = new ArrayList<>();
+        for (int i = 0; i < this.elaboratedMiniChallenges.size(); i++) {
+            if (i == newIndex) {
+                newArray.add(toBeMoved);
+            }
+            newArray.add(this.elaboratedMiniChallenges.get(i));
+        }
+
+        this.elaboratedMiniChallenges = newArray;
     }
 
 
