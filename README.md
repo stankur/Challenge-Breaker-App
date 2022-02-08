@@ -17,7 +17,8 @@ immediately solve it.
 pieces
 
 This project aims to help users break down their challenges into smaller
-and more manageable pieces which we call "mini elaborated challenges".
+and more manageable pieces which we call "mini elaborated challenges" which each could be
+treated and interpreted as a challenge.
 
 What you'll be able to do with **Challenge Breaker**:
 
