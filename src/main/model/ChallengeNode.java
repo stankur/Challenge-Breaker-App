@@ -33,14 +33,12 @@ public class ChallengeNode {
     // REQUIRES: elaborated mini challenges contains given challenge and
     // 0 <= new index < size of elaborated mini challenges
     // MODIFIES: this
-    // EFFECTS: exchanges the position of the given challenge and the challenge
-    // in the specified new position
-    public void changePosition(ChallengeNode challenge, int newIndex) {
-        int oldIndex = this.elaboratedMiniChallenges.indexOf(challenge);
-        ChallengeNode toBeReplaced = this.elaboratedMiniChallenges.get(newIndex);
-
-        this.elaboratedMiniChallenges.set(newIndex, challenge);
-        this.elaboratedMiniChallenges.set(oldIndex, toBeReplaced);
+    // EFFECTS: moves the given challenge to given position
+    // in elaborated mini challenges with other challenges still having the same arrangement
+    public void changePosition(int oldIndex, int newIndex) {
+        ChallengeNode toBeMoved = this.elaboratedMiniChallenges.get(oldIndex);
+        this.elaboratedMiniChallenges.remove(oldIndex);
+        this.elaboratedMiniChallenges.add(newIndex, toBeMoved);
     }
 
 
@@ -67,11 +65,4 @@ public class ChallengeNode {
     public ArrayList<ChallengeNode> getElaboratedMiniChallenges() {
         return this.elaboratedMiniChallenges;
     }
-
-
-
-
-
-
-
 }

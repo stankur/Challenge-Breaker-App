@@ -92,16 +92,16 @@ class ChallengeNodeTest {
         testChallengeNode.addElaboratedMiniChallenge(challenge2);
         testChallengeNode.addElaboratedMiniChallenge(challenge3);
 
-        testChallengeNode.changePosition(challenge1, 0);
+        testChallengeNode.changePosition(0, 0);
         assertEquals(challenge1, testChallengeNode.getElaboratedMiniChallenges().get(0));
 
-        testChallengeNode.changePosition(challenge1, 1);
+        testChallengeNode.changePosition(0, 1);
         assertEquals(challenge1, testChallengeNode.getElaboratedMiniChallenges().get(1));
         assertEquals(challenge2, testChallengeNode.getElaboratedMiniChallenges().get(0));
 
-        testChallengeNode.changePosition(challenge2, 2);
+        testChallengeNode.changePosition(0, 2);
         assertEquals(challenge2, testChallengeNode.getElaboratedMiniChallenges().get(2));
-        assertEquals(challenge3, testChallengeNode.getElaboratedMiniChallenges().get(0));
+        assertEquals(challenge1, testChallengeNode.getElaboratedMiniChallenges().get(0));
     }
 
     @Test
