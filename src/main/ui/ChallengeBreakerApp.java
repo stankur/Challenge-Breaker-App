@@ -17,6 +17,7 @@ public class ChallengeBreakerApp {
     }
 
     // MODIFIES: this
+    // EFFECTS: processes user's input
     private void runChallengeBreaker() {
         boolean running = true;
 
@@ -103,7 +104,7 @@ public class ChallengeBreakerApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: reads user's command and give appropriate responses
+    // EFFECTS: processes user's command and give appropriate responses
     private void processCommand(String command) {
         if (command.equals("n")) {
             onNameEditRequest(currentChallenge);
@@ -120,7 +121,7 @@ public class ChallengeBreakerApp {
         } else if (command.equals("e")) {
             onExitRequest();
         } else {
-            System.out.println("invalid comment! Naughty user >:(");
+            System.out.println("invalid command!");
         }
     }
 
@@ -161,6 +162,11 @@ public class ChallengeBreakerApp {
         displayMiniElaboratedChallenges(challenge);
     }
 
+    // EFFECTS: checks if index is out of range
+    private boolean isIndexInvalid(int index, int maxIndex) {
+        return (index > maxIndex) || (index < 0);
+    }
+
     // MODIFIES: challenge
     // EFFECTS: removes an elaborated mini challenge of index specified by user from given challenge if exists
     // otherwise displays out of range message
@@ -174,7 +180,7 @@ public class ChallengeBreakerApp {
 
         int maxIndex = challenge.getElaboratedMiniChallenges().size() - 1;
 
-        if (toBeRemovedIndex > maxIndex || toBeRemovedIndex < 0) {
+        if (isIndexInvalid(toBeRemovedIndex, maxIndex)) {
             System.out.println("number entered is out of range");
         } else {
             ChallengeNode challengeToBeRemoved = challenge.getElaboratedMiniChallenges().get(toBeRemovedIndex);
@@ -188,7 +194,7 @@ public class ChallengeBreakerApp {
 
     // MODIFIES: challenge
     // EFFECTS: moves an elaborated mini challenge from a position specified by user to a position specified by user
-    // or displays out of range message
+    // if valid otherwise displays out of range message
     private void onMoveRequest(ChallengeNode challenge) {
         System.out.println("current mini elaborated challenges: \n");
         displayMiniElaboratedChallenges(challenge);
@@ -203,8 +209,7 @@ public class ChallengeBreakerApp {
 
         int maxIndex = challenge.getElaboratedMiniChallenges().size() - 1;
 
-        if (oldIndex > maxIndex || newIndex > maxIndex
-                || oldIndex < 0 || newIndex < 0) {
+        if (isIndexInvalid(oldIndex, maxIndex) && isIndexInvalid(newIndex, maxIndex)) {
             System.out.println("at least on of the numbers entered is out of range");
         } else {
             challenge.changePosition(oldIndex, newIndex);
@@ -226,7 +231,7 @@ public class ChallengeBreakerApp {
         int selectedIndex = selectedPosition - 1;
         int maxIndex = this.currentChallenge.getElaboratedMiniChallenges().size() - 1;
 
-        if (selectedIndex > maxIndex || selectedIndex < 0) {
+        if (isIndexInvalid(selectedIndex, maxIndex)) {
             System.out.println("\nnumber entered is out of range");
         } else {
             this.visitedLayers.add(this.currentChallenge);
