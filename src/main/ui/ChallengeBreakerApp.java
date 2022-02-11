@@ -5,6 +5,7 @@ import model.ChallengeNode;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// citation: inspired by the structure of TellerApp
 // Challenge Breaker application
 public class ChallengeBreakerApp {
     private ArrayList<ChallengeNode> visitedLayers;
