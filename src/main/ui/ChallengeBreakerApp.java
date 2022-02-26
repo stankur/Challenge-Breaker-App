@@ -44,7 +44,7 @@ public class ChallengeBreakerApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: initializes Challenge
+    // EFFECTS: sets initializes challenge app
     private void init() {
         ChallengeNode templateChallenge = new ChallengeNode(
                 "template challenge",
