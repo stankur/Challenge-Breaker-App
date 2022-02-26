@@ -2,16 +2,16 @@ package model;
 
 import java.util.ArrayList;
 
-// Represents a challenge node having challenge name, challenge description, and
+// Represents a challenge having challenge name, challenge description, and
 // elaborated mini challenges
-public class ChallengeNode {
+public class Challenge {
     private String name;
     private String description;
-    private ArrayList<ChallengeNode> elaboratedMiniChallenges;
+    private ArrayList<Challenge> elaboratedMiniChallenges;
 
-    // EFFECTS: constructs a challenge node with given challenge name, given challenge description,
+    // EFFECTS: constructs a challenge with given challenge name, given challenge description,
     // and no elaborated mini challenges.
-    public ChallengeNode(String name, String description) {
+    public Challenge(String name, String description) {
         this.name = name;
         this.description = description;
         this.elaboratedMiniChallenges = new ArrayList<>();
@@ -19,14 +19,14 @@ public class ChallengeNode {
 
     // MODIFIES: this
     // EFFECTS: adds given challenge to the end of elaborated mini challenges
-    public void addElaboratedMiniChallenge(ChallengeNode challenge) {
+    public void addElaboratedMiniChallenge(Challenge challenge) {
         this.elaboratedMiniChallenges.add(challenge);
     }
 
     // REQUIRES: elaborated mini challenges contains given challenge
     // MODIFIES: this
     // EFFECTS: removes challenge from elaborated mini challenges
-    public void removeElaboratedMiniChallenge(ChallengeNode challenge) {
+    public void removeElaboratedMiniChallenge(Challenge challenge) {
         elaboratedMiniChallenges.remove(challenge);
     }
 
@@ -36,10 +36,10 @@ public class ChallengeNode {
     // EFFECTS: moves the given challenge to given position
     // in elaborated mini challenges with other challenges still having the same arrangement
     public void changePosition(int oldIndex, int newIndex) {
-        ChallengeNode toBeMoved = this.elaboratedMiniChallenges.get(oldIndex);
+        Challenge toBeMoved = this.elaboratedMiniChallenges.get(oldIndex);
         this.elaboratedMiniChallenges.remove(oldIndex);
 
-        ArrayList<ChallengeNode> newArray = new ArrayList<>();
+        ArrayList<Challenge> newArray = new ArrayList<>();
         for (int i = 0; i < this.elaboratedMiniChallenges.size(); i++) {
             if (i == newIndex) {
                 newArray.add(toBeMoved);
@@ -71,7 +71,7 @@ public class ChallengeNode {
         return this.description;
     }
 
-    public ArrayList<ChallengeNode> getElaboratedMiniChallenges() {
+    public ArrayList<Challenge> getElaboratedMiniChallenges() {
         return this.elaboratedMiniChallenges;
     }
 }
