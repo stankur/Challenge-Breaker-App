@@ -7,27 +7,27 @@ import java.util.ArrayList;
 public class Challenge {
     private String name;
     private String description;
-    private ArrayList<Challenge> elaboratedMiniChallenges;
+    private ChallengesGroup elaboratedMiniChallenges;
 
     // EFFECTS: constructs a challenge with given challenge name, given challenge description,
-    // and no elaborated mini challenges.
+    // and empty elaborated mini challenges.
     public Challenge(String name, String description) {
         this.name = name;
         this.description = description;
-        this.elaboratedMiniChallenges = new ArrayList<>();
+        this.elaboratedMiniChallenges = new ChallengesGroup();
     }
 
     // MODIFIES: this
     // EFFECTS: adds given challenge to the end of elaborated mini challenges
     public void addElaboratedMiniChallenge(Challenge challenge) {
-        this.elaboratedMiniChallenges.add(challenge);
+        this.elaboratedMiniChallenges.addChallenge(challenge);
     }
 
     // REQUIRES: elaborated mini challenges contains given challenge
     // MODIFIES: this
     // EFFECTS: removes challenge from elaborated mini challenges
     public void removeElaboratedMiniChallenge(Challenge challenge) {
-        elaboratedMiniChallenges.remove(challenge);
+        this.elaboratedMiniChallenges.removeChallenge(challenge);
     }
 
     // REQUIRES: elaborated mini challenges contains given challenge and
@@ -36,18 +36,7 @@ public class Challenge {
     // EFFECTS: moves the given challenge to given position
     // in elaborated mini challenges with other challenges still having the same arrangement
     public void changePosition(int oldIndex, int newIndex) {
-        Challenge toBeMoved = this.elaboratedMiniChallenges.get(oldIndex);
-        this.elaboratedMiniChallenges.remove(oldIndex);
-
-        ArrayList<Challenge> newArray = new ArrayList<>();
-        for (int i = 0; i < this.elaboratedMiniChallenges.size(); i++) {
-            if (i == newIndex) {
-                newArray.add(toBeMoved);
-            }
-            newArray.add(this.elaboratedMiniChallenges.get(i));
-        }
-
-        this.elaboratedMiniChallenges = newArray;
+        this.elaboratedMiniChallenges.changePosition(oldIndex, newIndex);
     }
 
 
@@ -71,7 +60,8 @@ public class Challenge {
         return this.description;
     }
 
+    // EFFECTS: gets an ArrayList of challenges in elaborated mini challenges
     public ArrayList<Challenge> getElaboratedMiniChallenges() {
-        return this.elaboratedMiniChallenges;
+        return this.elaboratedMiniChallenges.getChallenges();
     }
 }
