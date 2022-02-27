@@ -82,7 +82,7 @@ public class ChallengeBreakerApp {
     private void displayMiniElaboratedChallenges(Challenge challenge) {
         int counter = 1;
 
-        for (Challenge miniElaboratedChallenge : challenge.getElaboratedMiniChallenges()) {
+        for (Challenge miniElaboratedChallenge : challenge.getElaboratedMiniChallenges().getChallenges()) {
             System.out.println(counter);
             System.out.println("name: " + miniElaboratedChallenge.getName());
             System.out.println("description: " + miniElaboratedChallenge.getDescription() + "\n");
@@ -179,12 +179,13 @@ public class ChallengeBreakerApp {
         int toBeRemoved = Integer.parseInt(input.nextLine());
         int toBeRemovedIndex = toBeRemoved - 1;
 
-        int maxIndex = challenge.getElaboratedMiniChallenges().size() - 1;
+        int maxIndex = challenge.getElaboratedMiniChallenges().getChallenges().size() - 1;
 
         if (isIndexInvalid(toBeRemovedIndex, maxIndex)) {
             System.out.println("number entered is out of range");
         } else {
-            Challenge challengeToBeRemoved = challenge.getElaboratedMiniChallenges().get(toBeRemovedIndex);
+            Challenge challengeToBeRemoved = challenge.getElaboratedMiniChallenges()
+                    .getChallenges().get(toBeRemovedIndex);
             challenge.removeElaboratedMiniChallenge(challengeToBeRemoved);
 
             System.out.println("challenge removed\n");
@@ -208,7 +209,7 @@ public class ChallengeBreakerApp {
         int newPosition = Integer.parseInt(input.nextLine());
         int newIndex = newPosition - 1;
 
-        int maxIndex = challenge.getElaboratedMiniChallenges().size() - 1;
+        int maxIndex = challenge.getElaboratedMiniChallenges().getChallenges().size() - 1;
 
         if (isIndexInvalid(oldIndex, maxIndex) && isIndexInvalid(newIndex, maxIndex)) {
             System.out.println("at least on of the numbers entered is out of range");
@@ -230,13 +231,14 @@ public class ChallengeBreakerApp {
 
         int selectedPosition = Integer.parseInt(input.nextLine());
         int selectedIndex = selectedPosition - 1;
-        int maxIndex = this.currentChallenge.getElaboratedMiniChallenges().size() - 1;
+        int maxIndex = this.currentChallenge.getElaboratedMiniChallenges().getChallenges().size() - 1;
 
         if (isIndexInvalid(selectedIndex, maxIndex)) {
             System.out.println("\nnumber entered is out of range");
         } else {
             this.visitedLayers.add(this.currentChallenge);
-            this.currentChallenge = this.currentChallenge.getElaboratedMiniChallenges().get(selectedIndex);
+            this.currentChallenge = this.currentChallenge.getElaboratedMiniChallenges()
+                    .getChallenges().get(selectedIndex);
 
             System.out.println("\ncurrent challenge: " + this.currentChallenge.getName());
         }

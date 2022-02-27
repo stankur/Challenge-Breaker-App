@@ -7,11 +7,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ChallengesGroupTest {
+    private Challenge testChallenge;
     private ChallengesGroup testChallengesGroup;
 
     @BeforeEach
     void runBefore() {
-        testChallengesGroup = new ChallengesGroup();
+        testChallenge = new Challenge("challenge 1", "description 1");
+        testChallengesGroup = new ChallengesGroup(testChallenge);
     }
 
     @Test
