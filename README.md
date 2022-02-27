@@ -1,6 +1,5 @@
 # Challenge Breaker
 
----
 ## Break down your challenges!
 
 
