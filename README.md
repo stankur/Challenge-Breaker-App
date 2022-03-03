@@ -29,6 +29,7 @@ What you'll be able to do with **Challenge Breaker**:
 - remove existing challenges
 - update name and description of existing challenges
 - switch order of mini elaborated challenges
+- track challenge completion by checking and unchecking challenges
 
 **Persistence**
 - save state of current challenge anytime

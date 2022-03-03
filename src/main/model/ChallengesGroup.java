@@ -15,8 +15,14 @@ public class ChallengesGroup {
 
     // MODIFIES: this
     // EFFECTS: adds given challenge to the end of challenges and sets given challenges group to this
+    // and sets given challenge checked state to be the same as parent
     public void addChallenge(Challenge challenge) {
         challenge.setChallengesGroup(this);
+
+        if (parentChallenge.isChecked()) {
+            challenge.toggleCheck();
+        }
+
         this.challenges.add(challenge);
     }
 

@@ -65,9 +65,11 @@ public class ChallengeBreakerApp {
     private void displayChallengeInfo(Challenge challenge) {
         String name = challenge.getName();
         String description = challenge.getDescription();
+        boolean isChecked = challenge.isChecked();
         System.out.println("challenge information \n");
         System.out.println("challenge name: " + name);
-        System.out.println("challenge description: " + description + "\n");
+        System.out.println("challenge description: " + description);
+        System.out.println("challenge completed? " + isChecked + "\n");
         System.out.println("elaboration: \n");
         displayMiniElaboratedChallenges(challenge);
         displayHorizontalBreak();
@@ -85,7 +87,8 @@ public class ChallengeBreakerApp {
         for (Challenge miniElaboratedChallenge : challenge.getElaboratedMiniChallenges().getChallenges()) {
             System.out.println(counter);
             System.out.println("name: " + miniElaboratedChallenge.getName());
-            System.out.println("description: " + miniElaboratedChallenge.getDescription() + "\n");
+            System.out.println("description: " + miniElaboratedChallenge.getDescription());
+            System.out.println("completed? " + miniElaboratedChallenge.isChecked() + "\n");
 
             counter++;
         }
@@ -95,7 +98,8 @@ public class ChallengeBreakerApp {
     private void displayChallengeOptions() {
         System.out.println("enter: \n");
         System.out.println("n to edit challenge name");
-        System.out.println("d to edit challenge description\n");
+        System.out.println("d to edit challenge description");
+        System.out.println("c to toggle completion\n");
         System.out.println("a to add an elaborated mini challenge");
         System.out.println("r to remove an elaborated mini challenge");
         System.out.println("m to rearrange elaborated mini challenges");
@@ -111,6 +115,8 @@ public class ChallengeBreakerApp {
             onNameEditRequest(currentChallenge);
         } else if (command.equals("d")) {
             onDescriptionEditRequest(currentChallenge);
+        } else if (command.equals("c")) {
+            onToggleCheckRequest(currentChallenge);
         } else if (command.equals("a")) {
             onAddRequest(currentChallenge);
         } else if (command.equals("r")) {
@@ -124,6 +130,15 @@ public class ChallengeBreakerApp {
         } else {
             System.out.println("invalid command!");
         }
+    }
+
+    // MODIFIES: challenge
+    // EFFECTS: toggles challenge's checked value
+    private void onToggleCheckRequest(Challenge challenge) {
+        System.out.println("before: completed?: " + challenge.isChecked());
+        challenge.toggleCheck();
+        System.out.println("now: completed?: " + challenge.isChecked());
+
     }
 
     // MODIFIES: challenge

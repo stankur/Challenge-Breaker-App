@@ -69,19 +69,14 @@ public class Challenge {
     public void toggleCheck() {
         this.checked = !this.checked;
 
-        System.out.println(this.name + " tried to toggle");
         if (this.checked) {
-            System.out.println(this.name + " tried to sink check");
             this.elaboratedMiniChallenges.sinkCheck();
             if (challengesGroupExists()) {
-                System.out.println(this.name + " tried to lift check");
                 this.challengesGroup.liftCheck();
             }
         } else {
             this.elaboratedMiniChallenges.sinkUnCheck();
-            System.out.println(this.name + " tried to sink uncheck");
             if (challengesGroupExists()) {
-                System.out.println(this.name + " tried to lift uncheck");
                 this.challengesGroup.liftUnCheck();
             }
         }
@@ -95,7 +90,6 @@ public class Challenge {
     // MODIFIES: this
     // EFFECTS: checks challenge and sinks check to elaborated mini challenges
     protected void sinkCheck() {
-        System.out.println(this.name + " forced to check and sink check");
         this.checked = true;
         this.elaboratedMiniChallenges.sinkCheck();
     }
@@ -108,8 +102,6 @@ public class Challenge {
         this.checked = true;
 
         if (!Objects.isNull(this.challengesGroup)) {
-            System.out.println(this.name + " has challenges group");
-            System.out.println(this.name + " forced to check and lift check");
             this.challengesGroup.liftCheck();
         }
     }
@@ -117,7 +109,6 @@ public class Challenge {
     // MODIFIES: this
     // EFFECTS: unchecks challenge and sinks uncheck to elaborated mini challenges
     protected void sinkUnCheck() {
-        System.out.println(this.name + " forced to uncheck and sink check");
         this.checked = false;
         this.elaboratedMiniChallenges.sinkUnCheck();
     }
@@ -128,8 +119,6 @@ public class Challenge {
     protected void liftUnCheck() {
         if (this.checked) {
             if (!Objects.isNull(this.challengesGroup)) {
-                System.out.println(this.name + " has challenges group");
-                System.out.println(this.name + " forced to check and lift check");
                 this.challengesGroup.liftUnCheck();
             }
             this.checked = false;
