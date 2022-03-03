@@ -406,6 +406,49 @@ class ChallengeTest {
     }
 
     @Test
+    void testCheckAllMiniChallengesChecksMultipleLayersParents() {
+        testChallengeTree001.toggleCheck();
+        testChallengeTree01.toggleCheck();
+        testChallengeTree02.toggleCheck();
+        testChallengeTree1.toggleCheck();
+        testChallengeTree2.toggleCheck();
+
+        assertFalse(testChallengeTree.isChecked());
+        assertFalse(testChallengeTree0.isChecked());
+        assertTrue(testChallengeTree1.isChecked());
+        assertTrue(testChallengeTree2.isChecked());
+        assertFalse(testChallengeTree00.isChecked());
+        assertTrue(testChallengeTree01.isChecked());
+        assertTrue(testChallengeTree02.isChecked());
+        assertTrue(testChallengeTree10.isChecked());
+        assertTrue(testChallengeTree11.isChecked());
+        assertTrue(testChallengeTree12.isChecked());
+        assertTrue(testChallengeTree20.isChecked());
+        assertTrue(testChallengeTree21.isChecked());
+        assertFalse(testChallengeTree000.isChecked());
+        assertTrue(testChallengeTree001.isChecked());
+
+        testChallengeTree000.toggleCheck();
+
+        assertTrue(testChallengeTree.isChecked());
+        assertTrue(testChallengeTree0.isChecked());
+        assertTrue(testChallengeTree1.isChecked());
+        assertTrue(testChallengeTree2.isChecked());
+        assertTrue(testChallengeTree00.isChecked());
+        assertTrue(testChallengeTree01.isChecked());
+        assertTrue(testChallengeTree02.isChecked());
+        assertTrue(testChallengeTree10.isChecked());
+        assertTrue(testChallengeTree11.isChecked());
+        assertTrue(testChallengeTree12.isChecked());
+        assertTrue(testChallengeTree20.isChecked());
+        assertTrue(testChallengeTree21.isChecked());
+        assertTrue(testChallengeTree000.isChecked());
+        assertTrue(testChallengeTree001.isChecked());
+
+
+    }
+
+    @Test
     void testUncheckChallengeInAllCheckedCGUnchecksParent() {
         testChallengeTree00.toggleCheck();
         testChallengeTree01.toggleCheck();
@@ -426,6 +469,43 @@ class ChallengeTest {
         assertFalse(testChallengeTree20.isChecked());
         assertFalse(testChallengeTree21.isChecked());
         assertTrue(testChallengeTree000.isChecked());
+        assertTrue(testChallengeTree001.isChecked());
+    }
+
+    @Test
+    void testUncheckChallengeUnchecksMultipleParentLayers() {
+        testChallengeTree.toggleCheck();
+
+        assertTrue(testChallengeTree.isChecked());
+        assertTrue(testChallengeTree0.isChecked());
+        assertTrue(testChallengeTree1.isChecked());
+        assertTrue(testChallengeTree2.isChecked());
+        assertTrue(testChallengeTree00.isChecked());
+        assertTrue(testChallengeTree01.isChecked());
+        assertTrue(testChallengeTree02.isChecked());
+        assertTrue(testChallengeTree10.isChecked());
+        assertTrue(testChallengeTree11.isChecked());
+        assertTrue(testChallengeTree12.isChecked());
+        assertTrue(testChallengeTree20.isChecked());
+        assertTrue(testChallengeTree21.isChecked());
+        assertTrue(testChallengeTree000.isChecked());
+        assertTrue(testChallengeTree001.isChecked());
+
+        testChallengeTree000.toggleCheck();
+
+        assertFalse(testChallengeTree.isChecked());
+        assertFalse(testChallengeTree0.isChecked());
+        assertTrue(testChallengeTree1.isChecked());
+        assertTrue(testChallengeTree2.isChecked());
+        assertFalse(testChallengeTree00.isChecked());
+        assertTrue(testChallengeTree01.isChecked());
+        assertTrue(testChallengeTree02.isChecked());
+        assertTrue(testChallengeTree10.isChecked());
+        assertTrue(testChallengeTree11.isChecked());
+        assertTrue(testChallengeTree12.isChecked());
+        assertTrue(testChallengeTree20.isChecked());
+        assertTrue(testChallengeTree21.isChecked());
+        assertFalse(testChallengeTree000.isChecked());
         assertTrue(testChallengeTree001.isChecked());
     }
 
