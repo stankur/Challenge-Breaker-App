@@ -1,0 +1,39 @@
+{
+  "name": "name",
+  "description": "description",
+  "checked": false,
+  "elaboratedMiniChallenges": [
+    {
+      "name": "name0",
+      "description": "description0",
+      "checked": true,
+      "elaboratedMiniChallenges": [
+        {
+          "name": "name00",
+          "description": "description00",
+          "checked": true
+        },
+        {
+          "name": "name01",
+          "description": "description01",
+          "checked": true
+        },
+        {
+          "name": "name02",
+          "description": "description02",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "name": "name1",
+      "description": "description1",
+      "checked": false
+    },
+    {
+      "name": "name2",
+      "description": "description2",
+      "checked": false
+    }
+  ]
+}

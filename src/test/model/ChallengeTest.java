@@ -1,6 +1,7 @@
 package model;
 
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -508,5 +509,4 @@ class ChallengeTest {
         assertFalse(testChallengeTree000.isChecked());
         assertTrue(testChallengeTree001.isChecked());
     }
-
 }

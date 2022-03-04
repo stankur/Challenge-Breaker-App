@@ -29,7 +29,7 @@ public class JsonReader {
     public Challenge read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
-        return parseChallenge(jsonObject);
+        return parseChallengeRoot(jsonObject);
     }
 
     // EFFECTS: reads source file as string and returns it
@@ -55,7 +55,7 @@ public class JsonReader {
             JSONArray jsonArray = jsonObject.getJSONArray("elaboratedMiniChallenges");
             addChallenges(challenge, jsonArray);
         } catch (JSONException e) {
-            if (Boolean.parseBoolean(jsonObject.getString("checked"))) {
+            if (jsonObject.getBoolean("checked")) {
                 challenge.toggleCheck();
             }
         }
@@ -93,12 +93,12 @@ public class JsonReader {
         if (!challenge.isChecked()) {
             int elaboratedMiniChallengesLength = challenge.getElaboratedMiniChallenges().getChallenges().size();
             for (int i = 0; i < elaboratedMiniChallengesLength; i++) {
-                boolean checked = Boolean.parseBoolean(
-                        ((JSONObject) jsonArray.get(i)).getString("checked")
-                );
+                boolean checked = ((JSONObject) jsonArray.get(i)).getBoolean("checked");
 
                 if (checked) {
-                    challenge.getElaboratedMiniChallenges().getChallenges().get(i).toggleCheck();
+                    if (!challenge.getElaboratedMiniChallenges().getChallenges().get(i).isChecked()) {
+                        challenge.getElaboratedMiniChallenges().getChallenges().get(i).toggleCheck();
+                    }
                 }
 
             }
