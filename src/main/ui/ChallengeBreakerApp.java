@@ -11,6 +11,7 @@ import java.util.Scanner;
 // citation: inspired by the structure of TellerApp
 // Challenge Breaker application
 public class ChallengeBreakerApp {
+    private Challenge mainChallenge;
     private ArrayList<Challenge> visitedLayers;
     private Challenge currentChallenge;
     private Scanner input;
@@ -47,14 +48,14 @@ public class ChallengeBreakerApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: sets initializes challenge app
+    // EFFECTS: initializes challenge app
     private void init() {
-        Challenge templateChallenge = new Challenge(
+        mainChallenge = new Challenge(
                 "template challenge",
                 "template description"
         );
         visitedLayers = new ArrayList<>();
-        currentChallenge = templateChallenge;
+        currentChallenge = mainChallenge;
         input = new Scanner(System.in);
     }
 
@@ -100,13 +101,19 @@ public class ChallengeBreakerApp {
     // EFFECTS: displays challenge options
     private void displayChallengeOptions() {
         System.out.println("enter: \n");
+        System.out.println("q to quit Challenge Breaker");
+        System.out.println("s to save main challenge\n");
+
+
         System.out.println("n to edit challenge name");
         System.out.println("d to edit challenge description");
         System.out.println("c to toggle completion\n");
+
         System.out.println("a to add an elaborated mini challenge");
         System.out.println("r to remove an elaborated mini challenge");
         System.out.println("m to rearrange elaborated mini challenges");
         System.out.println("i to step into an elaborated mini challenge\n");
+
         System.out.println("e to exit from current challenge\n");
         displayHorizontalBreak();
     }
