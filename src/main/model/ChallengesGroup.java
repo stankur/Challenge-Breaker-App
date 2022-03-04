@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 
 // Represents a group of challenges having challenges
@@ -96,4 +98,15 @@ public class ChallengesGroup {
         return this.parentChallenge;
     }
 
+    // REQUIRES: challenge group not empty
+    // EFFECTS: returns this as JSON array
+    protected JSONArray toJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Challenge challenge : this.challenges) {
+            jsonArray.put(challenge.toJson());
+        }
+
+        return jsonArray;
+    }
 }

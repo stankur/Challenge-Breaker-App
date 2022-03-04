@@ -1,3 +1,6 @@
+// inspired by
+// https://github.students.cs.ubc.ca/CPSC210/TellerApp/blob/master/src/main/ca/ubc/cpsc210/bank/ui/TellerApp.java
+
 package ui;
 
 import model.Challenge;

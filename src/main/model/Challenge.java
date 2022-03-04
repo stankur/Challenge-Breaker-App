@@ -1,11 +1,13 @@
 package model;
 
-import java.util.ArrayList;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.Objects;
 
 // Represents a challenge having challenge name, challenge description, and
 // elaborated mini challenges
-public class Challenge {
+public class Challenge implements Writable {
     private String name;
     private String description;
     private ChallengesGroup elaboratedMiniChallenges;
@@ -101,7 +103,7 @@ public class Challenge {
     protected void liftCheck() {
         this.checked = true;
 
-        if (!Objects.isNull(this.challengesGroup)) {
+        if (challengesGroupExists()) {
             this.challengesGroup.liftCheck();
         }
     }
@@ -118,7 +120,7 @@ public class Challenge {
     // checked. Otherwise, does nothing
     protected void liftUnCheck() {
         if (this.checked) {
-            if (!Objects.isNull(this.challengesGroup)) {
+            if (challengesGroupExists()) {
                 this.challengesGroup.liftUnCheck();
             }
             this.checked = false;
@@ -137,12 +139,27 @@ public class Challenge {
         return this.checked;
     }
 
-    // EFFECTS: gets an ArrayList of challenges in elaborated mini challenges
     public ChallengesGroup getElaboratedMiniChallenges() {
         return this.elaboratedMiniChallenges;
     }
 
     public ChallengesGroup getChallengesGroup() {
         return this.challengesGroup;
+    }
+
+    // EFFECTS: returns this as JSON object
+    @Override
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+
+        jsonObject.put("name", this.name);
+        jsonObject.put("description", this.description);
+        jsonObject.put("checked", this.checked);
+
+        if (!this.elaboratedMiniChallenges.getChallenges().isEmpty()) {
+            jsonObject.put("elaboratedMiniChallenges", this.elaboratedMiniChallenges.toJson());
+        }
+
+        return jsonObject;
     }
 }
