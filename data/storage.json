@@ -1,0 +1,34 @@
+{
+    "name": "c",
+    "description": "d",
+    "checked": false,
+    "elaboratedMiniChallenges": [
+        {
+            "name": "c0",
+            "description": "d0",
+            "checked": true,
+            "elaboratedMiniChallenges": [
+                {
+                    "name": "c00",
+                    "description": "d00",
+                    "checked": true
+                },
+                {
+                    "name": "c01",
+                    "description": "d01",
+                    "checked": true
+                }
+            ]
+        },
+        {
+            "name": "c1",
+            "description": "d1",
+            "checked": false
+        },
+        {
+            "name": "c2",
+            "description": "d2",
+            "checked": false
+        }
+    ]
+}

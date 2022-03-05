@@ -32,6 +32,6 @@ What you'll be able to do with **Challenge Breaker**:
 - track challenge completion by checking and unchecking challenges
 
 **Persistence**
-- save state of current challenge anytime
+- save state of current challenge anytime you want
 - be reminded to save the state of current challenge when quitting
-- load previous challenge when starting application
+- load previous challenge anytime you want

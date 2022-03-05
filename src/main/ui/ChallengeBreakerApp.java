@@ -1,20 +1,32 @@
 // inspired by
 // https://github.students.cs.ubc.ca/CPSC210/TellerApp/blob/master/src/main/ca/ubc/cpsc210/bank/ui/TellerApp.java
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo/blob/master/src/main/ui/WorkRoomApp.java
 
 package ui;
 
+import jdk.nashorn.internal.ir.debug.JSONWriter;
 import model.Challenge;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 // citation: inspired by the structure of TellerApp
 // Challenge Breaker application
 public class ChallengeBreakerApp {
+    private static final String STORAGE = "./data/storage.json";
+
     private Challenge mainChallenge;
     private ArrayList<Challenge> visitedLayers;
     private Challenge currentChallenge;
+
     private Scanner input;
+
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // EFFECTS: runs Challenge Breaker application
     public ChallengeBreakerApp() {
@@ -29,7 +41,6 @@ public class ChallengeBreakerApp {
         init();
 
         System.out.println("Challenge Breaker is now running");
-        System.out.println("to quit, enter \"q\"");
         displayHorizontalBreak();
 
         while (running) {
@@ -42,6 +53,15 @@ public class ChallengeBreakerApp {
                 processCommand(command);
             }
             displayHorizontalBreak();
+        }
+
+        System.out.println("before quiting, would you like to save challenge?\n\n");
+        System.out.println("press y to save or any other key to exit\n");
+
+        String command = input.nextLine();
+
+        if (command.equals("y")) {
+            save(this.mainChallenge);
         }
 
         System.out.println("thank you for using Challenge Breaker");
@@ -57,6 +77,8 @@ public class ChallengeBreakerApp {
         visitedLayers = new ArrayList<>();
         currentChallenge = mainChallenge;
         input = new Scanner(System.in);
+        jsonWriter = new JsonWriter(STORAGE);
+        jsonReader = new JsonReader(STORAGE);
     }
 
     // EFFECTS: displays challenge information and user's options
@@ -102,8 +124,8 @@ public class ChallengeBreakerApp {
     private void displayChallengeOptions() {
         System.out.println("enter: \n");
         System.out.println("q to quit Challenge Breaker");
-        System.out.println("s to save main challenge\n");
-
+        System.out.println("s to save challenge");
+        System.out.println("l to load last saved challenge\n");
 
         System.out.println("n to edit challenge name");
         System.out.println("d to edit challenge description");
@@ -121,7 +143,11 @@ public class ChallengeBreakerApp {
     // MODIFIES: this
     // EFFECTS: processes user's command and give appropriate responses
     private void processCommand(String command) {
-        if (command.equals("n")) {
+        if (command.equals("s")) {
+            save(mainChallenge);
+        } else if (command.equals("l")) {
+            load();
+        } else if (command.equals("n")) {
             onNameEditRequest(currentChallenge);
         } else if (command.equals("d")) {
             onDescriptionEditRequest(currentChallenge);
@@ -139,6 +165,32 @@ public class ChallengeBreakerApp {
             onExitRequest();
         } else {
             System.out.println("invalid command!");
+        }
+    }
+
+    // EFFECTS: saves main challenge to STORAGE
+    private void save(Challenge challenge) {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(mainChallenge);
+            jsonWriter.close();
+            System.out.println("Saved challenge to " + STORAGE);
+        } catch (FileNotFoundException e) {
+            System.out.println(STORAGE + " not found");
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads main challenge from file
+    private void load() {
+        try {
+            this.mainChallenge = jsonReader.read();
+            System.out.println("Loaded challenge from " + STORAGE);
+
+            currentChallenge = this.mainChallenge;
+            visitedLayers = new ArrayList<>();
+        } catch (IOException e) {
+            System.out.println(STORAGE + " not found");
         }
     }
 
