@@ -426,6 +426,7 @@ public class JsonWriterTest {
     void testWriterThreeLayersRootChecked() {
         try {
             Challenge challenge = new Challenge("name", "description");
+            challenge.toggleCheck();
 
             Challenge challenge0 = new Challenge("name0", "description0");
             challenge0.addElaboratedMiniChallenge(new Challenge("name00", "description00"));
@@ -435,8 +436,6 @@ public class JsonWriterTest {
             challenge.addElaboratedMiniChallenge(challenge0);
             challenge.addElaboratedMiniChallenge(new Challenge("name1", "description1"));
             challenge.addElaboratedMiniChallenge(new Challenge("name2", "description2"));
-
-            challenge.toggleCheck();
 
             JsonWriter writer = new JsonWriter("./data/testWriterTwoLayersAllUnchecked.json");
             writer.open();

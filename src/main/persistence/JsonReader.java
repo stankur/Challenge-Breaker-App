@@ -90,19 +90,18 @@ public class JsonReader {
             challenge.addElaboratedMiniChallenge(parseChallenge((JSONObject) jsonObject));
         }
 
-        if (!challenge.isChecked()) {
-            int elaboratedMiniChallengesLength = challenge.getElaboratedMiniChallenges().getChallenges().size();
-            for (int i = 0; i < elaboratedMiniChallengesLength; i++) {
-                boolean checked = ((JSONObject) jsonArray.get(i)).getBoolean("checked");
 
-                if (checked) {
-                    if (!challenge.getElaboratedMiniChallenges().getChallenges().get(i).isChecked()) {
-                        challenge.getElaboratedMiniChallenges().getChallenges().get(i).toggleCheck();
-                    }
+        int elaboratedMiniChallengesLength = challenge.getElaboratedMiniChallenges().getChallenges().size();
+        for (int i = 0; i < elaboratedMiniChallengesLength; i++) {
+            boolean checked = ((JSONObject) jsonArray.get(i)).getBoolean("checked");
+
+            if (checked) {
+                if (!challenge.getElaboratedMiniChallenges().getChallenges().get(i).isChecked()) {
+                    challenge.getElaboratedMiniChallenges().getChallenges().get(i).toggleCheck();
                 }
-
             }
         }
+
     }
 
 

@@ -118,4 +118,21 @@ public class ChallengesGroupTest {
         assertEquals(challenge3, testChallengesGroup.getChallenges().get(2));
         assertEquals(challenge2, testChallengesGroup.getChallenges().get(3));
     }
+
+    @Test
+    void testAddChallengeToCheckedParent() {
+        testChallenge.toggleCheck();
+
+        Challenge challenge1 = new Challenge("name1", "description1");
+        Challenge challenge2 = new Challenge("name2", "description2");
+        Challenge challenge3 = new Challenge("name3", "description3");
+
+        testChallengesGroup.addChallenge(challenge1);
+        testChallengesGroup.addChallenge(challenge2);
+        testChallengesGroup.addChallenge(challenge3);
+
+        assertTrue(challenge1.isChecked());
+        assertTrue(challenge2.isChecked());
+        assertTrue(challenge3.isChecked());
+    }
 }
