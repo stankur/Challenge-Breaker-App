@@ -1,34 +1,27 @@
 {
-    "name": "c",
-    "description": "d",
+    "name": "template challenge",
+    "description": "template description",
     "checked": false,
     "elaboratedMiniChallenges": [
         {
-            "name": "c0",
-            "description": "d0",
-            "checked": true,
-            "elaboratedMiniChallenges": [
-                {
-                    "name": "c00",
-                    "description": "d00",
-                    "checked": true
-                },
-                {
-                    "name": "c01",
-                    "description": "d01",
-                    "checked": true
-                }
-            ]
+            "name": "0",
+            "description": "desc0",
+            "checked": false,
+            "elaboratedMiniChallenges": [{
+                "name": "00",
+                "description": "desc00",
+                "checked": false
+            }]
         },
         {
-            "name": "c1",
-            "description": "d1",
-            "checked": false
+            "name": "1",
+            "description": "desc1",
+            "checked": true
         },
         {
-            "name": "c2",
-            "description": "d2",
-            "checked": false
+            "name": "2",
+            "description": "desc2",
+            "checked": true
         }
     ]
 }

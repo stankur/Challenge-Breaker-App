@@ -168,11 +168,11 @@ public class ChallengeBreakerApp {
         }
     }
 
-    // EFFECTS: saves main challenge to STORAGE
+    // EFFECTS: saves challenge to STORAGE
     private void save(Challenge challenge) {
         try {
             jsonWriter.open();
-            jsonWriter.write(mainChallenge);
+            jsonWriter.write(challenge);
             jsonWriter.close();
             System.out.println("Saved challenge to " + STORAGE);
         } catch (FileNotFoundException e) {
