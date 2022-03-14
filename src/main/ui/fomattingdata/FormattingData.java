@@ -55,12 +55,16 @@ public class FormattingData {
         return this.constants.getAppWidth();
     }
 
+    public int getSidePanelWidth() {
+        return this.constants.getSidePanelWidth();
+    }
+
     public int getMainPanelWidth() {
         return this.constants.getMainPanelWidth();
     }
 
-    public int getTopBarHeight() {
-        return this.constants.getTopBarHeight();
+    public int getBarHeight() {
+        return this.constants.getBarHeight();
     }
 
     public int getSmallGap() {

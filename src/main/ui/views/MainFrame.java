@@ -24,17 +24,27 @@ public class MainFrame extends JFrame {
         this.controller = controller;
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setSize(750,600);
         setResizable(false);
-        setLayout(new BorderLayout());
+
+        add(createFramePanel());
+        pack();
+    }
+
+    private JPanel createFramePanel() {
+        JPanel framePanel = new JPanel();
+        framePanel.setSize(
+                this.formattingData.getAppWidth(),
+                this.formattingData.getAppHeight());
+        framePanel.setLayout(new BorderLayout());
 
         Challenge mainChallenge = this.controller.getMainChallenge();
         this.sidePanel = new SidePanel(this.formattingData, mainChallenge, this);
         this.mainPanel = new MainPanel(this.formattingData, this);
 
-        add(this.sidePanel, BorderLayout.WEST);
-        add(this.mainPanel, BorderLayout.EAST);
-    }
+        framePanel.add(this.sidePanel, BorderLayout.WEST);
+        framePanel.add(this.mainPanel, BorderLayout.EAST);
 
+        return framePanel;
+    }
 
 }

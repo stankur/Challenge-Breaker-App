@@ -23,10 +23,15 @@ public class TreeHolder extends JPanel {
         treeCellRenderer.assignFormattingData(this.formattingData);
 
         tree.setCellRenderer(treeCellRenderer);
-        tree.setRowHeight(25);
+        tree.setRowHeight(this.formattingData.getBarHeight());
 
-        Border pusher = BorderFactory.createEmptyBorder(10,20,0,0);
-        setPreferredSize(new Dimension(250, 250));
+        Border pusher = BorderFactory.createEmptyBorder(
+                this.formattingData.getSmallGap(),
+                this.formattingData.getMediumGap(),
+                0,
+                0);
+        setPreferredSize(new Dimension(this.formattingData.getSidePanelWidth(),
+                this.formattingData.getSidePanelWidth()));
         setBorder(pusher);
         setBackground(this.formattingData.getSidePanelBackground());
         add(tree);

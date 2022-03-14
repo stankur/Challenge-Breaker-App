@@ -14,14 +14,23 @@ public class SidePanelBottomBar extends JPanel {
 
         this.formattingData = formattingData;
 
-        setPreferredSize(new Dimension(250, 60));
+        setPreferredSize(new Dimension(
+                this.formattingData.getSidePanelWidth(),
+                this.formattingData.getSquareButtonSize() + 2 * this.formattingData.getSmallGap())
+        );
         setBackground(this.formattingData.getSidePanelBackground());
 
         SquareButton saveButton = new SquareButton(this.formattingData, "S");
         SquareButton loadButton = new SquareButton(this.formattingData, "L");
 
-        saveButton.setLocation(10,10);
-        loadButton.setLocation(58,10);
+        saveButton.setLocation(
+                this.formattingData.getSmallGap(),
+                this.formattingData.getSmallGap()
+        );
+        loadButton.setLocation(
+                this.formattingData.getSquareButtonSize() + 2 * this.formattingData.getSmallGap(),
+                this.formattingData.getSmallGap()
+        );
 
         setLayout(null);
         add(saveButton);

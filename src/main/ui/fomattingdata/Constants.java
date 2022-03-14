@@ -7,7 +7,7 @@ public class Constants {
     private int sidePanelWidth;
     private int mainPanelWidth;
 
-    private int topBarHeight;
+    private int barHeight;
 
     private int smallGap;
     private int mediumGap;
@@ -18,13 +18,13 @@ public class Constants {
     private int bigFont;
 
     public Constants() {
-        this.appHeight = 600;
+        this.appHeight = 575;
         this.appWidth = 750;
 
         this.sidePanelWidth = 250;
         this.mainPanelWidth = this.appWidth - this.sidePanelWidth;
 
-        this.topBarHeight = 25;
+        this.barHeight = 25;
 
         this.smallGap = 10;
         this.mediumGap = 20;
@@ -43,12 +43,16 @@ public class Constants {
         return this.appWidth;
     }
 
+    public int getSidePanelWidth() {
+        return this.sidePanelWidth;
+    }
+
     public int getMainPanelWidth() {
         return this.mainPanelWidth;
     }
 
-    public int getTopBarHeight() {
-        return this.topBarHeight;
+    public int getBarHeight() {
+        return this.barHeight;
     }
 
     public int getSmallGap() {

@@ -17,7 +17,10 @@ public class MainPanelTopBar extends JPanel {
         this.formattingData = formattingData;
         this.visitedLayers = visitedLayers;
 
-        setPreferredSize(new Dimension(500, 25));
+        setPreferredSize(
+                new Dimension(this.formattingData.getMainPanelWidth(),
+                this.formattingData.getBarHeight())
+        );
         setBackground(this.formattingData.getMainTopBarBackground());
 
         add(visitedLayers());
@@ -26,12 +29,15 @@ public class MainPanelTopBar extends JPanel {
     private JLabel visitedLayers() {
         JLabel description = new JLabel();
 
-        description.setPreferredSize(new Dimension(500, 25));
+        description.setPreferredSize(new Dimension(
+                this.formattingData.getMainPanelWidth(),
+                this.formattingData.getBarHeight())
+        );
         description.setText(getVisitedLayersString());
 
-        Border pusher = BorderFactory.createEmptyBorder(0, 20, 0, 0);
+        Border pusher = BorderFactory.createEmptyBorder(0, this.formattingData.getMediumGap(), 0, 0);
         description.setBorder(pusher);
-        description.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 13));
+        description.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, this.formattingData.getSmallFont()));
         description.setForeground(this.formattingData.getTextColor());
 
         description.setHorizontalAlignment(JLabel.LEFT);

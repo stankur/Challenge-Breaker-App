@@ -22,7 +22,10 @@ public class SidePanel extends JPanel {
         this.mainFrame = mainFrame;
         this.mainChallenge = mainChallenge;
 
-        setPreferredSize(new Dimension(250, 600));
+        setPreferredSize(new Dimension(
+                this.formattingData.getSidePanelWidth(),
+                this.formattingData.getAppHeight()
+        ));
         setBackground(this.formattingData.getSidePanelBackground());
         setLayout(new BorderLayout());
 
