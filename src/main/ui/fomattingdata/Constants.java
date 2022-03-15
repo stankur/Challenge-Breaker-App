@@ -16,6 +16,7 @@ public class Constants {
 
     private int smallFont;
     private int bigFont;
+    private int biggerFont;
 
     public Constants() {
         this.appHeight = 575;
@@ -33,6 +34,7 @@ public class Constants {
 
         this.smallFont = 13;
         this.bigFont = 18;
+        this.biggerFont = 21;
     }
 
     public int getAppHeight() {
@@ -73,5 +75,9 @@ public class Constants {
 
     public int getBigFont() {
         return this.bigFont;
+    }
+
+    public int getBiggerFont() {
+        return this.biggerFont;
     }
 }

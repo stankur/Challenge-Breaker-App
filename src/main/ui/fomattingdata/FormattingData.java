@@ -87,4 +87,8 @@ public class FormattingData {
         return this.constants.getBigFont();
     }
 
+    public int getBiggerFont() {
+        return this.constants.getBiggerFont();
+    }
+
 }

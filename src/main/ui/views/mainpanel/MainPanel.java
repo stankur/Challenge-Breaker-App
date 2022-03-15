@@ -6,12 +6,15 @@ import ui.views.MainFrame;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainPanel extends JPanel {
     private FormattingData formattingData;
     private MainFrame mainFrame;
 
     private int currentChallengeCardHeight;
+
+    private int miniElaboratedChallengesLabelHeight;
 
     public MainPanel(FormattingData formattingData, MainFrame mainframe) {
         this.formattingData = formattingData;
@@ -45,7 +48,6 @@ public class MainPanel extends JPanel {
 
     private JPanel createTestBottomPanel() {
         JPanel testBottom = new JPanel();
-        testBottom.setBorder(BorderFactory.createLineBorder(Color.blue));
         testBottom.setPreferredSize(new Dimension(
                 this.formattingData.getMainPanelWidth(),
                 this.formattingData.getAppHeight()
@@ -53,6 +55,25 @@ public class MainPanel extends JPanel {
                         - this.currentChallengeCardHeight
                 )
         );
+
+        testBottom.setLayout(new BorderLayout());
+
+        this.miniElaboratedChallengesLabelHeight = 30 + this.formattingData.getSmallGap();
+        testBottom.add(new MiniElaboratedChallengesLabel(
+                this.formattingData,
+                this.miniElaboratedChallengesLabelHeight
+        ),
+                BorderLayout.NORTH);
+
+        int remainingHeight = this.formattingData.getAppHeight() - this.formattingData.getBarHeight()
+                - this.currentChallengeCardHeight - this.miniElaboratedChallengesLabelHeight;
+
+        List<String> testNames = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            testNames.add("Some stupid sub challenge");
+        }
+
+        testBottom.add(new MiniChallenges(this.formattingData, remainingHeight, testNames));
 
         return testBottom;
     }

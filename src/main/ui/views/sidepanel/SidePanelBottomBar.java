@@ -20,8 +20,8 @@ public class SidePanelBottomBar extends JPanel {
         );
         setBackground(this.formattingData.getSidePanelBackground());
 
-        SquareButton saveButton = new SquareButton(this.formattingData, "S");
-        SquareButton loadButton = new SquareButton(this.formattingData, "L");
+        SquareButton saveButton = new SquareButton(this.formattingData, "↓");
+        SquareButton loadButton = new SquareButton(this.formattingData, "↑");
 
         saveButton.setLocation(
                 this.formattingData.getSmallGap(),

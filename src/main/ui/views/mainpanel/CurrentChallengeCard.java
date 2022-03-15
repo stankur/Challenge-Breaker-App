@@ -1,6 +1,7 @@
 package ui.views.mainpanel;
 
 import ui.fomattingdata.FormattingData;
+import ui.views.reusables.HeaderBar;
 import ui.views.reusables.SquareButton;
 
 import javax.swing.*;
@@ -77,50 +78,18 @@ public class CurrentChallengeCard extends JPanel {
                 + 2 * this.formattingData.getSmallGap();
         int borderedButtonWidth = this.formattingData.getSmallGap() + this.formattingData.getSquareButtonSize();
 
-        JPanel header = new JPanel();
-        header.setPreferredSize(new Dimension(
-                this.cardWidth,
-                this.headerHeight
-        ));
-        header.setBackground(this.formattingData.getCardBackground());
-        header.setLayout(null);
-
-        SquareButton checkBox = createCheckBox();
-        checkBox.setLocation(
-                this.formattingData.getSmallGap(),
-                this.formattingData.getSmallGap());
+        JPanel header = new HeaderBar(this.formattingData, this.name, this.cardWidth);
 
         SquareButton add = createAddButton();
-        add.setLocation(this.cardWidth - borderedButtonWidth,this.formattingData.getSmallGap());
+        add.setLocation(this.cardWidth - borderedButtonWidth, this.formattingData.getSmallGap());
 
         SquareButton exit = createExitButton();
-        exit.setLocation(this.cardWidth - 2 * borderedButtonWidth,this.formattingData.getSmallGap());
+        exit.setLocation(this.cardWidth - 2 * borderedButtonWidth, this.formattingData.getSmallGap());
 
-        header.add(checkBox);
         header.add(add);
         header.add(exit);
-        header.add(createNameLabel());
 
         return header;
-    }
-
-    private JLabel createNameLabel() {
-        int borderedButtonWidth = this.formattingData.getSmallGap() + this.formattingData.getSquareButtonSize();
-
-        JLabel challengeName = new JLabel();
-        challengeName.setText(this.name);
-        challengeName.setBounds(borderedButtonWidth + this.formattingData.getSmallGap(),
-                this.formattingData.getSmallGap(),
-                this.formattingData.getAppHeight()
-                        - this.formattingData.getBarHeight()
-                        - this.rawHeight,
-                this.formattingData.getSquareButtonSize());
-        challengeName.setForeground(this.formattingData.getTextColor());
-        challengeName.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, this.formattingData.getBigFont()));
-        challengeName.setHorizontalAlignment(JLabel.LEFT);
-        challengeName.setVerticalAlignment(JLabel.CENTER);
-
-        return challengeName;
     }
 
     private JPanel createDescriptionPanel() {
@@ -149,16 +118,12 @@ public class CurrentChallengeCard extends JPanel {
         return descriptionPanel;
     }
 
-    private SquareButton createCheckBox() {
-        return new SquareButton(this.formattingData, " ");
-    }
-
     private SquareButton createAddButton() {
-        return new SquareButton(this.formattingData, "+");
+        return new SquareButton(this.formattingData, "﹢");
     }
 
     private SquareButton createExitButton() {
-        return new SquareButton(this.formattingData, "<");
+        return new SquareButton(this.formattingData, "←");
     }
 
 }
