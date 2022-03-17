@@ -17,6 +17,7 @@ public class MainFrame extends JFrame {
     private SidePanel sidePanel;
     private MainPanel mainPanel;
 
+
     public MainFrame(FormattingData formattingData, ChallengeBreakerController controller) {
         super("Challenge Breaker");
 

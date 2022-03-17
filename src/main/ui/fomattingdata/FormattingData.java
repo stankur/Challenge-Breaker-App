@@ -91,4 +91,36 @@ public class FormattingData {
         return this.constants.getBiggerFont();
     }
 
+    public int getChallengeCardPanelHeight() {
+        return this.constants.getChallengeCardPanelHeight();
+    }
+
+    public int getBottomPanelHeight() {
+        return this.constants.getBottomPanelHeight();
+    }
+
+    public int getMiniElaboratedChallengesLabelHeight() {
+        return this.constants.getMiniElaboratedChallengesLabelHeight();
+    }
+
+    public int getCardHeight() {
+        return this.constants.getCardHeight();
+    }
+
+    public int getCardWidth() {
+        return this.constants.getCardWidth();
+    }
+
+    public int getHeaderHeight() {
+        return this.constants.getHeaderHeight();
+    }
+
+    public int getBorderedButtonWidth() {
+        return this.constants.getBorderedButtonWidth();
+    }
+
+    public int getMiniElaboratedChallengesPaneHeight() {
+        return this.constants.getMiniElaboratedChallengesPaneHeight();
+    }
+
 }

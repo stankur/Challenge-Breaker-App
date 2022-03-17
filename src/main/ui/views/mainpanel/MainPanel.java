@@ -12,10 +12,6 @@ public class MainPanel extends JPanel {
     private FormattingData formattingData;
     private MainFrame mainFrame;
 
-    private int currentChallengeCardHeight;
-
-    private int miniElaboratedChallengesLabelHeight;
-
     public MainPanel(FormattingData formattingData, MainFrame mainframe) {
         this.formattingData = formattingData;
         this.mainFrame = mainframe;
@@ -34,9 +30,7 @@ public class MainPanel extends JPanel {
 
         add(new MainPanelTopBar(this.formattingData, testVisitedLayers), BorderLayout.NORTH);
 
-        this.currentChallengeCardHeight = 230;
         add(new CurrentChallengeCard(this.formattingData,
-                this.currentChallengeCardHeight,
                 "Some Challenge Lol",
                 ("Stupid Challenge description that is very long "
                 + "so that the line will fukin break and go to a new mf line"
@@ -52,28 +46,23 @@ public class MainPanel extends JPanel {
                 this.formattingData.getMainPanelWidth(),
                 this.formattingData.getAppHeight()
                         - this.formattingData.getBarHeight()
-                        - this.currentChallengeCardHeight
+                        - this.formattingData.getChallengeCardPanelHeight()
                 )
         );
 
         testBottom.setLayout(new BorderLayout());
 
-        this.miniElaboratedChallengesLabelHeight = 30 + this.formattingData.getSmallGap();
         testBottom.add(new MiniElaboratedChallengesLabel(
-                this.formattingData,
-                this.miniElaboratedChallengesLabelHeight
+                this.formattingData
         ),
                 BorderLayout.NORTH);
-
-        int remainingHeight = this.formattingData.getAppHeight() - this.formattingData.getBarHeight()
-                - this.currentChallengeCardHeight - this.miniElaboratedChallengesLabelHeight;
 
         List<String> testNames = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             testNames.add("Some stupid sub challenge");
         }
 
-        testBottom.add(new MiniChallenges(this.formattingData, remainingHeight, testNames));
+        testBottom.add(new MiniChallenges(this.formattingData, testNames));
 
         return testBottom;
     }

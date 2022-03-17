@@ -9,7 +9,7 @@ import java.awt.*;
 public class MiniElaboratedChallengesLabel extends JPanel {
     private FormattingData formattingData;
 
-    public MiniElaboratedChallengesLabel(FormattingData formattingData, int height) {
+    public MiniElaboratedChallengesLabel(FormattingData formattingData) {
         super();
 
         this.formattingData = formattingData;
@@ -17,7 +17,7 @@ public class MiniElaboratedChallengesLabel extends JPanel {
         setLayout(null);
         setPreferredSize(new Dimension(
                 this.formattingData.getMainPanelWidth(),
-                height
+                this.formattingData.getMiniElaboratedChallengesLabelHeight()
         ));
 
         JLabel label = new JLabel();

@@ -10,22 +10,20 @@ import java.util.List;
 
 public class MiniChallenges extends JScrollPane {
     FormattingData formattingData;
-    int height;
     int cardWidth;
     List<String> challengeNames;
 
 
-    public MiniChallenges(FormattingData formattingData, int height, List<String> challengeNames) {
+    public MiniChallenges(FormattingData formattingData, List<String> challengeNames) {
         super();
 
         this.formattingData = formattingData;
-        this.height = height;
         this.challengeNames = challengeNames;
         this.cardWidth = this.formattingData.getMainPanelWidth() - 2 * this.formattingData.getSmallGap();
 
         setPreferredSize(new Dimension(
                 this.formattingData.getMainPanelWidth(),
-                height));
+                this.formattingData.getMiniElaboratedChallengesPaneHeight()));
         setBackground(this.formattingData.getMainBackground());
         setViewportView(miniChallengesPanel());
 
@@ -56,10 +54,10 @@ public class MiniChallenges extends JScrollPane {
 
         panel.setLayout(null);
 
-        if (height > theoreticalPanelHeight) {
+        if (this.formattingData.getMiniElaboratedChallengesPaneHeight() > theoreticalPanelHeight) {
             panel.setPreferredSize(new Dimension(
                     this.formattingData.getMainPanelWidth(),
-                    height));
+                    this.formattingData.getMiniElaboratedChallengesPaneHeight()));
         } else {
             panel.setPreferredSize(new Dimension(
                     this.formattingData.getMainPanelWidth(),
@@ -89,16 +87,15 @@ public class MiniChallenges extends JScrollPane {
 
         HeaderBar emptyBar = new HeaderBar(
                 this.formattingData,
-                challengeName,
-                this.cardWidth);
+                challengeName);
 
         SquareButton removeButton = createRemoveButton();
         removeButton.setLocation(this.cardWidth - borderedButtonWidth, this.formattingData.getSmallGap());
 
-        SquareButton reArrangeButton = createStepIntoButton();
+        SquareButton reArrangeButton = createReArrangeButton();
         reArrangeButton.setLocation(this.cardWidth - 2 * borderedButtonWidth, this.formattingData.getSmallGap());
 
-        SquareButton stepIntoButton = createReArrangeButton();
+        SquareButton stepIntoButton = createStepIntoButton();
         stepIntoButton.setLocation(this.cardWidth - 3 * borderedButtonWidth, this.formattingData.getSmallGap());
 
         emptyBar.add(removeButton);

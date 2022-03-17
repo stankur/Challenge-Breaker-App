@@ -7,23 +7,18 @@ import java.awt.*;
 
 public class HeaderBar extends JPanel {
     FormattingData formattingData;
-    int headerHeight;
-    int headerWidth;
     String title;
 
-    public HeaderBar(FormattingData formattingData, String title, int headerWidth) {
+    public HeaderBar(FormattingData formattingData, String title) {
         super();
 
         this.formattingData = formattingData;
 
-        this.headerHeight = this.formattingData.getSquareButtonSize()
-                + 2 * this.formattingData.getSmallGap();
-        this.headerWidth = headerWidth;
         this.title = title;
 
         setPreferredSize(new Dimension(
-                this.headerWidth,
-                this.headerHeight
+                this.formattingData.getCardWidth(),
+                this.formattingData.getHeaderHeight()
         ));
 
         setBackground(this.formattingData.getCardBackground());
@@ -47,7 +42,7 @@ public class HeaderBar extends JPanel {
         challengeName.setText(this.title);
         challengeName.setBounds(borderedButtonWidth + this.formattingData.getSmallGap(),
                 this.formattingData.getSmallGap(),
-                this.headerWidth
+                this.formattingData.getCardWidth()
                         - 4 * borderedButtonWidth
                         - 3 + this.formattingData.getSmallGap(),
                 this.formattingData.getSquareButtonSize());
@@ -65,10 +60,10 @@ public class HeaderBar extends JPanel {
 
 
     public int getHeaderHeight() {
-        return this.headerHeight;
+        return this.formattingData.getHeaderHeight();
     }
 
     public int getHeaderWidth() {
-        return this.headerWidth;
+        return this.formattingData.getCardWidth();
     }
 }

@@ -5,7 +5,6 @@ public class Constants {
     private int appWidth;
 
     private int sidePanelWidth;
-    private int mainPanelWidth;
 
     private int barHeight;
 
@@ -18,24 +17,42 @@ public class Constants {
     private int bigFont;
     private int biggerFont;
 
+    private int challengeCardPanelHeight;
+    private int miniElaboratedChallengesLabelHeight;
+
     public Constants() {
+        initializeFonts();
+        initializeGaps();
+        initializeSizes();
+    }
+
+    private void initializeSizes() {
         this.appHeight = 575;
         this.appWidth = 750;
 
+        this.squareButtonSize = 40;
+
         this.sidePanelWidth = 250;
-        this.mainPanelWidth = this.appWidth - this.sidePanelWidth;
 
         this.barHeight = 25;
 
+        this.challengeCardPanelHeight = 230;
+        this.miniElaboratedChallengesLabelHeight = 30 + this.smallGap;
+
+    }
+
+    private void initializeGaps() {
         this.smallGap = 10;
         this.mediumGap = 20;
+    }
 
-        this.squareButtonSize = 40;
-
+    private void initializeFonts() {
         this.smallFont = 13;
         this.bigFont = 18;
         this.biggerFont = 21;
     }
+
+
 
     public int getAppHeight() {
         return this.appHeight;
@@ -50,7 +67,7 @@ public class Constants {
     }
 
     public int getMainPanelWidth() {
-        return this.mainPanelWidth;
+        return this.appWidth - this.sidePanelWidth;
     }
 
     public int getBarHeight() {
@@ -80,4 +97,39 @@ public class Constants {
     public int getBiggerFont() {
         return this.biggerFont;
     }
+
+    public int getChallengeCardPanelHeight() {
+        return this.challengeCardPanelHeight;
+    }
+
+    public int getBottomPanelHeight() {
+        return this.appHeight - this.barHeight - this.challengeCardPanelHeight;
+    }
+
+    public int getMiniElaboratedChallengesLabelHeight() {
+        return this.miniElaboratedChallengesLabelHeight;
+    }
+
+    public int getCardWidth() {
+        return this.appWidth - this.sidePanelWidth - 2 * this.smallGap;
+    }
+
+    public int getCardHeight() {
+        return this.challengeCardPanelHeight - 2 * this.smallGap;
+    }
+
+    public int getHeaderHeight() {
+        return this.squareButtonSize + 2 * this.smallGap;
+    }
+
+    public int getBorderedButtonWidth() {
+        return this.smallGap + this.squareButtonSize;
+    }
+
+    public int getMiniElaboratedChallengesPaneHeight() {
+        return this.appHeight - this.barHeight
+                - this.challengeCardPanelHeight
+                - this.miniElaboratedChallengesLabelHeight;
+    }
+
 }
