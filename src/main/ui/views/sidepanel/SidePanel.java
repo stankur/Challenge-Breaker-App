@@ -10,7 +10,6 @@ import java.awt.*;
 
 public class SidePanel extends JPanel {
     private FormattingData formattingData;
-
     private Challenge mainChallenge;
 
     private MainFrame mainFrame;
@@ -29,9 +28,9 @@ public class SidePanel extends JPanel {
         setBackground(this.formattingData.getSidePanelBackground());
         setLayout(new BorderLayout());
 
-        add(new SidePanelTopBar(this.formattingData), BorderLayout.NORTH);
-        add(new TreeHolder(this.formattingData), BorderLayout.CENTER);
-        add(new SidePanelBottomBar(this.formattingData), BorderLayout.SOUTH);
+        add(new SidePanelTopBar(this.formattingData, this), BorderLayout.NORTH);
+        add(new TreeHolder(this.formattingData, this), BorderLayout.CENTER);
+        add(new SidePanelBottomBar(this.formattingData, this), BorderLayout.SOUTH);
     }
 
 

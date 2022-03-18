@@ -1,6 +1,7 @@
-package ui.views.mainpanel;
+package ui.views.mainpanel.challengecardpanel;
 
 import ui.fomattingdata.FormattingData;
+import ui.views.mainpanel.MainPanel;
 import ui.views.reusables.HeaderBar;
 import ui.views.reusables.SquareButton;
 
@@ -15,9 +16,9 @@ public class CurrentChallengeCard extends JPanel {
 
     public CurrentChallengeCard(
             FormattingData formattingData,
-                                String name,
-                                String description,
-                                MainPanel mainPanel
+            MainPanel mainPanel,
+            String name,
+            String description
     ) {
         super();
 
@@ -51,28 +52,13 @@ public class CurrentChallengeCard extends JPanel {
         panel.setBackground(this.formattingData.getCardBackground());
         panel.setLayout(new BorderLayout());
 
-        panel.add(createHeader(), BorderLayout.NORTH);
+        panel.add(new CurrentChallengeHeader(
+                this.formattingData,
+                this,
+                this.name), BorderLayout.NORTH);
         panel.add(createDescriptionPanel(), BorderLayout.SOUTH);
 
         return panel;
-    }
-
-    private JPanel createHeader() {
-        JPanel header = new HeaderBar(this.formattingData, this.name);
-
-        SquareButton add = createAddButton();
-        add.setLocation(this.formattingData.getCardWidth() - this.formattingData.getBorderedButtonWidth(),
-                this.formattingData.getSmallGap());
-
-        SquareButton exit = createExitButton();
-        exit.setLocation(this.formattingData.getCardWidth()
-                - 2 * this.formattingData.getBorderedButtonWidth(),
-                this.formattingData.getSmallGap());
-
-        header.add(add);
-        header.add(exit);
-
-        return header;
     }
 
     private JPanel createDescriptionPanel() {
@@ -102,13 +88,4 @@ public class CurrentChallengeCard extends JPanel {
 
         return descriptionPanel;
     }
-
-    private SquareButton createAddButton() {
-        return new SquareButton(this.formattingData, "﹢");
-    }
-
-    private SquareButton createExitButton() {
-        return new SquareButton(this.formattingData, "←");
-    }
-
 }

@@ -2,6 +2,8 @@ package ui.views.mainpanel;
 
 import ui.fomattingdata.FormattingData;
 import ui.views.MainFrame;
+import ui.views.mainpanel.challengecardpanel.CurrentChallengeCard;
+import ui.views.mainpanel.minichallengespanel.MiniChallenges;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,11 +33,12 @@ public class MainPanel extends JPanel {
         add(new MainPanelTopBar(this.formattingData, testVisitedLayers), BorderLayout.NORTH);
 
         add(new CurrentChallengeCard(this.formattingData,
+                this,
                 "Some Challenge Lol",
                 ("Stupid Challenge description that is very long "
                 + "so that the line will fukin break and go to a new mf line"
-                + " please work lmao I donno anymore what to write hjrnknrfnnlefmfmremmremfmkfr"),
-                this), BorderLayout.CENTER);
+                + " please work lmao I donno anymore what to write hjrnknrfnnlefmfmremmremfmkfr")
+                ), BorderLayout.CENTER);
 
         add(createTestBottomPanel(), BorderLayout.SOUTH);
     }
@@ -62,7 +65,7 @@ public class MainPanel extends JPanel {
             testNames.add("Some stupid sub challenge");
         }
 
-        testBottom.add(new MiniChallenges(this.formattingData, testNames));
+        testBottom.add(new MiniChallenges(this.formattingData, this, testNames));
 
         return testBottom;
     }

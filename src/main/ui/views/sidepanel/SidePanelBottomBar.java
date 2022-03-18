@@ -8,11 +8,13 @@ import java.awt.*;
 
 public class SidePanelBottomBar extends JPanel {
     private FormattingData formattingData;
+    private SidePanel sidePanel;
 
-    public SidePanelBottomBar(FormattingData formattingData) {
+    public SidePanelBottomBar(FormattingData formattingData, SidePanel sidePanel) {
         super();
 
         this.formattingData = formattingData;
+        this.sidePanel = sidePanel;
 
         setPreferredSize(new Dimension(
                 this.formattingData.getSidePanelWidth(),

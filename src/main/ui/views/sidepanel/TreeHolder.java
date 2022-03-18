@@ -10,11 +10,13 @@ import java.awt.*;
 
 public class TreeHolder extends JPanel {
     private FormattingData formattingData;
+    private SidePanel sidePanel;
 
-    public TreeHolder(FormattingData formattingData) {
+    public TreeHolder(FormattingData formattingData, SidePanel sidePanel) {
         super(new GridLayout());
 
         this.formattingData = formattingData;
+        this.sidePanel = sidePanel;
 
         JTree tree = new JTree(testTree());
         tree.setBackground(this.formattingData.getSidePanelBackground());

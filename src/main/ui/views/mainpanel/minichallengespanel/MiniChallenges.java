@@ -1,6 +1,7 @@
-package ui.views.mainpanel;
+package ui.views.mainpanel.minichallengespanel;
 
 import ui.fomattingdata.FormattingData;
+import ui.views.mainpanel.MainPanel;
 import ui.views.reusables.HeaderBar;
 import ui.views.reusables.SquareButton;
 
@@ -12,13 +13,15 @@ public class MiniChallenges extends JScrollPane {
     FormattingData formattingData;
     int cardWidth;
     List<String> challengeNames;
+    MainPanel mainPanel;
 
 
-    public MiniChallenges(FormattingData formattingData, List<String> challengeNames) {
+    public MiniChallenges(FormattingData formattingData, MainPanel mainPanel, List<String> challengeNames) {
         super();
 
         this.formattingData = formattingData;
         this.challengeNames = challengeNames;
+        this.mainPanel = mainPanel;
         this.cardWidth = this.formattingData.getMainPanelWidth() - 2 * this.formattingData.getSmallGap();
 
         setPreferredSize(new Dimension(
