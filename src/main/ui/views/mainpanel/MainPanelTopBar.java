@@ -12,7 +12,7 @@ public class MainPanelTopBar extends JPanel {
     private FormattingData formattingData;
     private List<String> visitedLayers;
 
-    public MainPanelTopBar(FormattingData formattingData, ArrayList<String> visitedLayers) {
+    public MainPanelTopBar(FormattingData formattingData, List<String> visitedLayers) {
         super();
         this.formattingData = formattingData;
         this.visitedLayers = visitedLayers;

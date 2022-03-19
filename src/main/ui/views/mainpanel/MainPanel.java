@@ -1,9 +1,13 @@
 package ui.views.mainpanel;
 
+import model.Challenge;
 import ui.fomattingdata.FormattingData;
+import ui.views.FramePanel;
 import ui.views.MainFrame;
+import ui.views.helpers.Updater;
 import ui.views.mainpanel.challengecardpanel.CurrentChallengeCard;
-import ui.views.mainpanel.minichallengespanel.MiniChallenges;
+import ui.views.mainpanel.minichallengesarea.minichallengespanel.MiniChallenges;
+import ui.views.mainpanel.minichallengesarea.MiniElaboratedChallengesLabel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,11 +16,24 @@ import java.util.List;
 
 public class MainPanel extends JPanel {
     private FormattingData formattingData;
-    private MainFrame mainFrame;
+    private FramePanel framePanel;
+    private List<String> visitedLayers;
+    private Challenge currentChallenge;
 
-    public MainPanel(FormattingData formattingData, MainFrame mainframe) {
+    private JPanel bottomPanel;
+
+
+    public MainPanel(FormattingData formattingData,
+                     List<String> visitedLayers,
+                     Challenge currentChallenge,
+                     FramePanel framePanel) {
         this.formattingData = formattingData;
-        this.mainFrame = mainframe;
+        this.framePanel = framePanel;
+        this.visitedLayers = visitedLayers;
+        this.currentChallenge = currentChallenge;
+        this.bottomPanel = createBottomPanel();
+
+
 
         setPreferredSize(
                 new Dimension(
@@ -27,46 +44,49 @@ public class MainPanel extends JPanel {
         setBackground(this.formattingData.getMainBackground());
         setLayout(new BorderLayout());
 
-        ArrayList<String> testVisitedLayers = new ArrayList<>();
-        testVisitedLayers.add("Main Challenge");
-
-        add(new MainPanelTopBar(this.formattingData, testVisitedLayers), BorderLayout.NORTH);
+        add(new MainPanelTopBar(this.formattingData, this.visitedLayers), BorderLayout.NORTH);
 
         add(new CurrentChallengeCard(this.formattingData,
                 this,
-                "Some Challenge Lol",
-                ("Stupid Challenge description that is very long "
-                + "so that the line will fukin break and go to a new mf line"
-                + " please work lmao I donno anymore what to write hjrnknrfnnlefmfmremmremfmkfr")
+                currentChallenge.getName(),
+                currentChallenge.getDescription()
                 ), BorderLayout.CENTER);
 
-        add(createTestBottomPanel(), BorderLayout.SOUTH);
+        add(this.bottomPanel, BorderLayout.SOUTH);
     }
 
-    private JPanel createTestBottomPanel() {
-        JPanel testBottom = new JPanel();
-        testBottom.setPreferredSize(new Dimension(
-                this.formattingData.getMainPanelWidth(),
-                this.formattingData.getAppHeight()
-                        - this.formattingData.getBarHeight()
-                        - this.formattingData.getChallengeCardPanelHeight()
-                )
-        );
+    private JPanel createBottomPanel() {
+        JPanel bottomPanel = new JPanel();
+        bottomPanel.setPreferredSize(new Dimension(
+                this.formattingData.getMainPanelWidth(), this.formattingData.getBottomPanelHeight()
+        ));
 
-        testBottom.setLayout(new BorderLayout());
+        bottomPanel.setLayout(new BorderLayout());
 
-        testBottom.add(new MiniElaboratedChallengesLabel(
-                this.formattingData
-        ),
-                BorderLayout.NORTH);
+        bottomPanel.add(new MiniElaboratedChallengesLabel(this.formattingData), BorderLayout.NORTH);
 
-        List<String> testNames = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            testNames.add("Some stupid sub challenge");
+        List<Challenge> miniChallenges = this.currentChallenge.getElaboratedMiniChallenges().getChallenges();
+        List<String> miniChallengeNames = new ArrayList<>();
+        for (Challenge challenge: miniChallenges) {
+            miniChallengeNames.add(challenge.getName());
         }
+        bottomPanel.add(new MiniChallenges(this.formattingData, this, miniChallengeNames));
 
-        testBottom.add(new MiniChallenges(this.formattingData, this, testNames));
+        return bottomPanel;
+    }
 
-        return testBottom;
+    public void requestAddChallenge(String name, String description) {
+        this.framePanel.requestAddChallenge(name, description);
+    }
+
+    public void requestRemoveChallenge(int index) {
+        Challenge challengeToBeRemoved = this.currentChallenge.getElaboratedMiniChallenges().getChallenges().get(index);
+        this.currentChallenge.removeElaboratedMiniChallenge(challengeToBeRemoved);
+
+        remove(this.bottomPanel);
+        this.bottomPanel = createBottomPanel();
+        add(this.bottomPanel, BorderLayout.SOUTH);
+
+        new Updater(this);
     }
 }

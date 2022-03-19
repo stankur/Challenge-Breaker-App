@@ -1,9 +1,8 @@
-package ui.views.mainpanel.minichallengespanel;
+package ui.views.mainpanel.minichallengesarea.minichallengespanel;
 
 import ui.fomattingdata.FormattingData;
 import ui.views.mainpanel.MainPanel;
 import ui.views.reusables.HeaderBar;
-import ui.views.reusables.SquareButton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -58,25 +57,21 @@ public class MiniChallenges extends JScrollPane {
         panel.setLayout(null);
 
         if (this.formattingData.getMiniElaboratedChallengesPaneHeight() > theoreticalPanelHeight) {
-            panel.setPreferredSize(new Dimension(
-                    this.formattingData.getMainPanelWidth(),
+            panel.setPreferredSize(new Dimension(this.formattingData.getMainPanelWidth(),
                     this.formattingData.getMiniElaboratedChallengesPaneHeight()));
         } else {
             panel.setPreferredSize(new Dimension(
-                    this.formattingData.getMainPanelWidth(),
-                    theoreticalPanelHeight));
+                    this.formattingData.getMainPanelWidth(), theoreticalPanelHeight));
         }
 
         panel.setBackground(this.formattingData.getMainBackground());
 
         for (int i = 0; i < numberOfMiniChallenges; i++) {
-            HeaderBar miniChallengeBar = createMiniChallengeBar(challengeNames.get(i));
+            HeaderBar miniChallengeBar = new MiniChallengeHeader(
+                    this.formattingData, this, challengeNames.get(i), i);
 
-            miniChallengeBar.setBounds(
-                    this.formattingData.getSmallGap(),
-                    i * borderedMiniChallengeBarHeight,
-                    miniChallengeBar.getHeaderWidth(),
-                    miniChallengeBar.getHeaderHeight());
+            miniChallengeBar.setBounds(this.formattingData.getSmallGap(), i * borderedMiniChallengeBarHeight,
+                    miniChallengeBar.getHeaderWidth(), miniChallengeBar.getHeaderHeight());
 
             panel.add(miniChallengeBar);
         }
@@ -84,40 +79,9 @@ public class MiniChallenges extends JScrollPane {
         return panel;
     }
 
-    private HeaderBar createMiniChallengeBar(String challengeName) {
-        int borderedButtonWidth = this.formattingData.getSquareButtonSize()
-                + this.formattingData.getSmallGap();
-
-        HeaderBar emptyBar = new HeaderBar(
-                this.formattingData,
-                challengeName);
-
-        SquareButton removeButton = createRemoveButton();
-        removeButton.setLocation(this.cardWidth - borderedButtonWidth, this.formattingData.getSmallGap());
-
-        SquareButton reArrangeButton = createReArrangeButton();
-        reArrangeButton.setLocation(this.cardWidth - 2 * borderedButtonWidth, this.formattingData.getSmallGap());
-
-        SquareButton stepIntoButton = createStepIntoButton();
-        stepIntoButton.setLocation(this.cardWidth - 3 * borderedButtonWidth, this.formattingData.getSmallGap());
-
-        emptyBar.add(removeButton);
-        emptyBar.add(stepIntoButton);
-        emptyBar.add(reArrangeButton);
-
-        return emptyBar;
+    public void requestRemoveChallenge(int index) {
+        this.mainPanel.requestRemoveChallenge(index);
     }
 
-    private SquareButton createRemoveButton() {
-        return new SquareButton(this.formattingData, "✕");
-    }
-
-    private SquareButton createStepIntoButton() {
-        return new SquareButton(this.formattingData, "→");
-    }
-
-    private SquareButton createReArrangeButton() {
-        return new SquareButton(this.formattingData, "↕");
-    }
 
 }

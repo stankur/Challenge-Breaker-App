@@ -1,4 +1,4 @@
-package ui.views.mainpanel;
+package ui.views.mainpanel.minichallengesarea;
 
 import ui.fomattingdata.FormattingData;
 
@@ -26,9 +26,7 @@ public class MiniElaboratedChallengesLabel extends JPanel {
         label.setBounds(
                 this.formattingData.getMediumGap(),
                 0,
-                this.formattingData.getMainPanelWidth()
-                        - 2 * this.formattingData.getSmallGap()
-                        - 2 * this.formattingData.getMediumGap(),
+                this.formattingData.getMiniChallengesLabelWidth(),
                 30
         );
 

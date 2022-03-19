@@ -132,4 +132,12 @@ public class Constants {
                 - this.miniElaboratedChallengesLabelHeight;
     }
 
+    public int getButtonLocation(int i) {
+        return getCardWidth() - i * getBorderedButtonWidth();
+    }
+
+    public int getMiniChallengesLabelWidth() {
+        return this.getMainPanelWidth() - 2 * this.smallGap - 2 * this.mediumGap;
+    }
+
 }

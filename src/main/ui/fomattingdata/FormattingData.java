@@ -123,4 +123,12 @@ public class FormattingData {
         return this.constants.getMiniElaboratedChallengesPaneHeight();
     }
 
+    public int getButtonLocation(int i) {
+        return this.constants.getButtonLocation(i);
+    }
+
+    public int getMiniChallengesLabelWidth() {
+        return this.constants.getMiniChallengesLabelWidth();
+    }
+
 }

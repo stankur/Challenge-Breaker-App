@@ -3,6 +3,7 @@ package ui.views.sidepanel;
 import model.Challenge;
 
 import ui.fomattingdata.FormattingData;
+import ui.views.FramePanel;
 import ui.views.MainFrame;
 
 import javax.swing.*;
@@ -12,13 +13,13 @@ public class SidePanel extends JPanel {
     private FormattingData formattingData;
     private Challenge mainChallenge;
 
-    private MainFrame mainFrame;
+    private FramePanel framePanel;
 
-    public SidePanel(FormattingData formattingData, Challenge mainChallenge, MainFrame mainFrame) {
+    public SidePanel(FormattingData formattingData, Challenge mainChallenge, FramePanel framePanel) {
         super();
 
         this.formattingData = formattingData;
-        this.mainFrame = mainFrame;
+        this.framePanel = framePanel;
         this.mainChallenge = mainChallenge;
 
         setPreferredSize(new Dimension(

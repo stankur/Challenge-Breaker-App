@@ -65,8 +65,7 @@ public class CurrentChallengeCard extends JPanel {
         JPanel descriptionPanel = new JPanel();
 
         descriptionPanel.setPreferredSize(new Dimension(this.formattingData.getCardWidth(),
-                (this.formattingData.getCardHeight()
-                        - this.formattingData.getHeaderHeight())));
+                (this.formattingData.getCardHeight() - this.formattingData.getHeaderHeight())));
         descriptionPanel.setBackground(this.formattingData.getCardBackground());
 
         JTextArea descriptionLabel = new JTextArea();
@@ -75,7 +74,8 @@ public class CurrentChallengeCard extends JPanel {
                 this.formattingData.getSmallGap(),
                 this.formattingData.getCardWidth() - 2 * this.formattingData.getSmallGap(),
                 this.formattingData.getCardHeight() - 2 * this.formattingData.getSmallGap());
-        descriptionLabel.setBorder(BorderFactory.createEmptyBorder(10,0,0,0));
+        descriptionLabel.setBorder(BorderFactory.createEmptyBorder(
+                this.formattingData.getSmallGap(), 0, 0, 0));
         descriptionLabel.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 18));
         descriptionLabel.setText(this.description);
         descriptionLabel.setForeground(this.formattingData.getTextColor());
@@ -87,5 +87,9 @@ public class CurrentChallengeCard extends JPanel {
         descriptionPanel.add(descriptionLabel);
 
         return descriptionPanel;
+    }
+
+    public void requestAddChallenge(String name, String description) {
+        this.mainPanel.requestAddChallenge(name, description);
     }
 }

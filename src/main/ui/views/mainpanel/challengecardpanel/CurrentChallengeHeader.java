@@ -27,6 +27,9 @@ public class CurrentChallengeHeader extends HeaderBar {
 
         add(add);
         add(exit);
+    }
 
+    public void requestAddChallenge(String name, String description) {
+        this.card.requestAddChallenge(name, description);
     }
 }
