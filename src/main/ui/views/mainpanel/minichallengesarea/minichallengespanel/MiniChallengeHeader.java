@@ -30,4 +30,12 @@ public class MiniChallengeHeader extends HeaderBar {
     public void requestRemoveChallenge() {
         this.miniChallenges.requestRemoveChallenge(this.index);
     }
+
+    public void requestMoveTo(int newIndex) {
+        this.miniChallenges.requestRearrange(this.index, newIndex);
+    }
+
+    public void requestStepIntoMiniChallenge() {
+        this.miniChallenges.requestStepInto(this.index);
+    }
 }

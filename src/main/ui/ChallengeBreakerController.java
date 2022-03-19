@@ -15,8 +15,7 @@ public class ChallengeBreakerController {
     private static final String STORAGE = "./data/storage.json";
 
     private Challenge mainChallenge;
-    private ArrayList<Challenge> visitedLayers;
-    private Challenge currentChallenge;
+    private LayerNavigator layerNavigator;
 
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
@@ -30,8 +29,7 @@ public class ChallengeBreakerController {
                 "template challenge",
                 "template description"
         );
-        this.visitedLayers = new ArrayList<>();
-        this.currentChallenge = this.mainChallenge;
+        this.layerNavigator = new LayerNavigator(this.mainChallenge);
 
         this.jsonWriter = new JsonWriter(STORAGE);
         this.jsonReader = new JsonReader(STORAGE);
@@ -43,18 +41,11 @@ public class ChallengeBreakerController {
     }
 
     public Challenge getMainChallenge() {
-        return mainChallenge;
+        return this.mainChallenge;
     }
 
-    public ArrayList<Challenge> getVisitedLayers() {
-        return this.visitedLayers;
+    public LayerNavigator getLayerNavigator() {
+        return this.layerNavigator;
     }
-
-    public Challenge getCurrentChallenge() {
-        return this.currentChallenge;
-    }
-
-
-
 
 }

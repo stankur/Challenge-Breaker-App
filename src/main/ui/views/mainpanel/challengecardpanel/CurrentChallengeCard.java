@@ -2,8 +2,6 @@ package ui.views.mainpanel.challengecardpanel;
 
 import ui.fomattingdata.FormattingData;
 import ui.views.mainpanel.MainPanel;
-import ui.views.reusables.HeaderBar;
-import ui.views.reusables.SquareButton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +11,8 @@ public class CurrentChallengeCard extends JPanel {
     String name;
     String description;
     MainPanel mainPanel;
+
+    JPanel cardPanel;
 
     public CurrentChallengeCard(
             FormattingData formattingData,
@@ -34,17 +34,24 @@ public class CurrentChallengeCard extends JPanel {
         setBackground(this.formattingData.getMainBackground());
         setLayout(null);
 
-        JPanel panel = createCardPanel();
+        addCardPanel();
+    }
+
+    private void addCardPanel() {
+        JPanel panel = new JPanel();
         panel.setLocation(
                 this.formattingData.getSmallGap(),
                 this.formattingData.getSmallGap()
         );
+        setupCardPanel(panel);
+
+        this.cardPanel = panel;
+
         add(panel);
 
     }
 
-    private JPanel createCardPanel() {
-        JPanel panel = new JPanel();
+    private void setupCardPanel(JPanel panel) {
         panel.setSize(new Dimension(
                 this.formattingData.getCardWidth(),
                 this.formattingData.getCardHeight()
@@ -57,8 +64,6 @@ public class CurrentChallengeCard extends JPanel {
                 this,
                 this.name), BorderLayout.NORTH);
         panel.add(createDescriptionPanel(), BorderLayout.SOUTH);
-
-        return panel;
     }
 
     private JPanel createDescriptionPanel() {
@@ -91,5 +96,9 @@ public class CurrentChallengeCard extends JPanel {
 
     public void requestAddChallenge(String name, String description) {
         this.mainPanel.requestAddChallenge(name, description);
+    }
+
+    public void requestEditChallenge(String newName, String newDesc) {
+        this.mainPanel.requestEditChallenge(newName, newDesc);
     }
 }

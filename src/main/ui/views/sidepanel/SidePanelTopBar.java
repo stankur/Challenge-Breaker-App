@@ -29,17 +29,10 @@ public class SidePanelTopBar extends JPanel {
                 this.formattingData.getBarHeight()));
         description.setText("Challenge Structure");
 
-        Border pusher = BorderFactory.createEmptyBorder(
-                0,
-                this.formattingData.getMediumGap(),
-                0,
-                0
-        );
+        Border pusher = BorderFactory.createEmptyBorder(0, this.formattingData.getMediumGap(), 0, 0);
         description.setBorder(pusher);
         description.setFont(new Font(
-                "Arial Rounded MT Bold",
-                Font.PLAIN,
-                this.formattingData.getSmallFont()
+                "Arial Rounded MT Bold", Font.PLAIN, this.formattingData.getSmallFont()
         ));
         description.setForeground(this.formattingData.getTextColor());
 

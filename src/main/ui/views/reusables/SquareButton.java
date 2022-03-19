@@ -52,11 +52,13 @@ public class SquareButton extends JPanel implements MouseListener {
     public void mouseEntered(MouseEvent e) {
         setBackground(this.formattingData.getButtonOnHoverBackground());
         repaint();
+        revalidate();
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         setBackground(this.formattingData.getButtonBackground());
         repaint();
+        revalidate();
     }
 }

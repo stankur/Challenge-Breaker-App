@@ -45,11 +45,22 @@ public class ChallengesGroup {
         this.challenges.remove(oldIndex);
 
         ArrayList<Challenge> newArray = new ArrayList<>();
+
+        if (this.challenges.size() == 0) {
+            newArray.add(toBeMoved);
+            this.challenges = newArray;
+            return;
+        }
+
         for (int i = 0; i < this.challenges.size(); i++) {
             if (i == newIndex) {
                 newArray.add(toBeMoved);
             }
             newArray.add(this.challenges.get(i));
+        }
+
+        if (newIndex == this.challenges.size()) {
+            newArray.add(toBeMoved);
         }
 
         this.challenges = newArray;

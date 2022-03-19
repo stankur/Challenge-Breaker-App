@@ -15,7 +15,7 @@ public class AddButton extends SquareButton {
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mouseReleased(MouseEvent e) {
         Scanner input = new Scanner(System.in);
         System.out.println("wut challenge name u wan mate?");
         String name = input.nextLine();

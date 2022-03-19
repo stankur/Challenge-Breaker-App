@@ -3,7 +3,6 @@ package ui.views.mainpanel;
 import model.Challenge;
 import ui.fomattingdata.FormattingData;
 import ui.views.FramePanel;
-import ui.views.MainFrame;
 import ui.views.helpers.Updater;
 import ui.views.mainpanel.challengecardpanel.CurrentChallengeCard;
 import ui.views.mainpanel.minichallengesarea.minichallengespanel.MiniChallenges;
@@ -21,6 +20,8 @@ public class MainPanel extends JPanel {
     private Challenge currentChallenge;
 
     private JPanel bottomPanel;
+    private MainPanelTopBar mainPanelTopBar;
+    private CurrentChallengeCard currentChallengeCard;
 
 
     public MainPanel(FormattingData formattingData,
@@ -31,9 +32,6 @@ public class MainPanel extends JPanel {
         this.framePanel = framePanel;
         this.visitedLayers = visitedLayers;
         this.currentChallenge = currentChallenge;
-        this.bottomPanel = createBottomPanel();
-
-
 
         setPreferredSize(
                 new Dimension(
@@ -44,35 +42,53 @@ public class MainPanel extends JPanel {
         setBackground(this.formattingData.getMainBackground());
         setLayout(new BorderLayout());
 
-        add(new MainPanelTopBar(this.formattingData, this.visitedLayers), BorderLayout.NORTH);
-
-        add(new CurrentChallengeCard(this.formattingData,
-                this,
-                currentChallenge.getName(),
-                currentChallenge.getDescription()
-                ), BorderLayout.CENTER);
-
-        add(this.bottomPanel, BorderLayout.SOUTH);
+        addMainPanelTopBar();
+        addCurrentChallengeCard();
+        addBottomPanel();
     }
 
-    private JPanel createBottomPanel() {
+    private void addBottomPanel() {
         JPanel bottomPanel = new JPanel();
+        setUpBottomPanel(bottomPanel);
+
+        this.bottomPanel = bottomPanel;
+
+        add(this.bottomPanel, BorderLayout.SOUTH);
+
+    }
+
+    private void setUpBottomPanel(JPanel bottomPanel) {
         bottomPanel.setPreferredSize(new Dimension(
                 this.formattingData.getMainPanelWidth(), this.formattingData.getBottomPanelHeight()
         ));
-
         bottomPanel.setLayout(new BorderLayout());
-
         bottomPanel.add(new MiniElaboratedChallengesLabel(this.formattingData), BorderLayout.NORTH);
-
         List<Challenge> miniChallenges = this.currentChallenge.getElaboratedMiniChallenges().getChallenges();
         List<String> miniChallengeNames = new ArrayList<>();
         for (Challenge challenge: miniChallenges) {
             miniChallengeNames.add(challenge.getName());
         }
         bottomPanel.add(new MiniChallenges(this.formattingData, this, miniChallengeNames));
+    }
 
-        return bottomPanel;
+    private void addMainPanelTopBar() {
+        MainPanelTopBar mainPanelTopBar = new MainPanelTopBar(this.formattingData, this.visitedLayers);
+
+        this.mainPanelTopBar = mainPanelTopBar;
+
+        add(this.mainPanelTopBar, BorderLayout.NORTH);
+    }
+
+    private void addCurrentChallengeCard() {
+        CurrentChallengeCard currentChallengeCard = new CurrentChallengeCard(this.formattingData,
+                this,
+                currentChallenge.getName(),
+                currentChallenge.getDescription()
+        );
+
+        this.currentChallengeCard = currentChallengeCard;
+
+        add(this.currentChallengeCard, BorderLayout.CENTER);
     }
 
     public void requestAddChallenge(String name, String description) {
@@ -84,9 +100,31 @@ public class MainPanel extends JPanel {
         this.currentChallenge.removeElaboratedMiniChallenge(challengeToBeRemoved);
 
         remove(this.bottomPanel);
-        this.bottomPanel = createBottomPanel();
-        add(this.bottomPanel, BorderLayout.SOUTH);
+        addBottomPanel();
 
         new Updater(this);
+    }
+
+    public void requestRearrange(int oldIndex, int newIndex) {
+        this.currentChallenge.changePosition(oldIndex, newIndex);
+
+        remove(this.bottomPanel);
+        addBottomPanel();
+
+        new Updater(this);
+    }
+
+    public void requestEditChallenge(String newName, String newDesc) {
+        this.currentChallenge.editName(newName);
+        this.currentChallenge.editDescription(newDesc);
+
+        remove(this.currentChallengeCard);
+        addCurrentChallengeCard();
+
+        new Updater(this);
+    }
+
+    public void requestStepInto(int miniElaboratedChallengeIndex) {
+        this.framePanel.requestStepInto(miniElaboratedChallengeIndex);
     }
 }

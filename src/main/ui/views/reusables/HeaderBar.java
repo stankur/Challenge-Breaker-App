@@ -8,6 +8,7 @@ import java.awt.*;
 public class HeaderBar extends JPanel {
     FormattingData formattingData;
     String title;
+    JLabel challengeName;
 
     public HeaderBar(FormattingData formattingData, String title) {
         super();
@@ -36,14 +37,12 @@ public class HeaderBar extends JPanel {
     }
 
     private JLabel createNameLabel() {
-        int borderedButtonWidth = this.formattingData.getSmallGap() + this.formattingData.getSquareButtonSize();
-
         JLabel challengeName = new JLabel();
         challengeName.setText(this.title);
-        challengeName.setBounds(borderedButtonWidth + this.formattingData.getSmallGap(),
+        challengeName.setBounds(this.formattingData.getBorderedButtonWidth() + this.formattingData.getSmallGap(),
                 this.formattingData.getSmallGap(),
                 this.formattingData.getCardWidth()
-                        - 4 * borderedButtonWidth
+                        - 4 * this.formattingData.getBorderedButtonWidth()
                         - 3 + this.formattingData.getSmallGap(),
                 this.formattingData.getSquareButtonSize());
         challengeName.setForeground(this.formattingData.getTextColor());

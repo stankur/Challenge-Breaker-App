@@ -15,6 +15,6 @@ public class StepIntoButton extends SquareButton {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
+        this.miniChallengeHeader.requestStepIntoMiniChallenge();
     }
 }

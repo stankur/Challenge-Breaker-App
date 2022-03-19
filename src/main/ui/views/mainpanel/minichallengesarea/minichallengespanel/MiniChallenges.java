@@ -83,5 +83,22 @@ public class MiniChallenges extends JScrollPane {
         this.mainPanel.requestRemoveChallenge(index);
     }
 
+    public void requestRearrange(int oldIndex, int newIndex) {
+        int challengeNamesSize = this.challengeNames.size();
+        int max = challengeNamesSize - 1;
+        int min = 0;
 
+        if (newIndex > max) {
+            newIndex = max;
+        } else if (newIndex < min) {
+            newIndex = min;
+        }
+
+        System.out.println("old index is " + oldIndex + " new index is: " + newIndex);
+        this.mainPanel.requestRearrange(oldIndex, newIndex);
+    }
+
+    public void requestStepInto(int miniElaboratedChallengeIndex) {
+        this.mainPanel.requestStepInto(miniElaboratedChallengeIndex);
+    }
 }
