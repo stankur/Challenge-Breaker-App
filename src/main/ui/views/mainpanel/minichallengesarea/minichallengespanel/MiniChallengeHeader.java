@@ -8,8 +8,8 @@ public class MiniChallengeHeader extends HeaderBar {
     int index;
 
     public MiniChallengeHeader(FormattingData formattingData, MiniChallenges miniChallenges,
-                                String challengeName, int index) {
-        super(formattingData, challengeName);
+                                String challengeName, int index, boolean isChecked) {
+        super(formattingData, challengeName, miniChallenges, index, isChecked);
 
         this.miniChallenges = miniChallenges;
         this.index = index;

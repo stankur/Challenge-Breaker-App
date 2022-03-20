@@ -10,7 +10,6 @@ import ui.views.mainpanel.minichallengesarea.MiniElaboratedChallengesLabel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainPanel extends JPanel {
@@ -64,11 +63,7 @@ public class MainPanel extends JPanel {
         bottomPanel.setLayout(new BorderLayout());
         bottomPanel.add(new MiniElaboratedChallengesLabel(this.formattingData), BorderLayout.NORTH);
         List<Challenge> miniChallenges = this.currentChallenge.getElaboratedMiniChallenges().getChallenges();
-        List<String> miniChallengeNames = new ArrayList<>();
-        for (Challenge challenge: miniChallenges) {
-            miniChallengeNames.add(challenge.getName());
-        }
-        bottomPanel.add(new MiniChallenges(this.formattingData, this, miniChallengeNames));
+        bottomPanel.add(new MiniChallenges(this.formattingData, this, miniChallenges));
     }
 
     private void addMainPanelTopBar() {
@@ -83,7 +78,8 @@ public class MainPanel extends JPanel {
         CurrentChallengeCard currentChallengeCard = new CurrentChallengeCard(this.formattingData,
                 this,
                 currentChallenge.getName(),
-                currentChallenge.getDescription()
+                currentChallenge.getDescription(),
+                currentChallenge.isChecked()
         );
 
         this.currentChallengeCard = currentChallengeCard;
@@ -126,5 +122,36 @@ public class MainPanel extends JPanel {
 
     public void requestStepInto(int miniElaboratedChallengeIndex) {
         this.framePanel.requestStepInto(miniElaboratedChallengeIndex);
+    }
+
+    public void requestExitCurrentChallenge() {
+        this.framePanel.requestExitCurrentChallenge();
+    }
+
+    public void toggleCheckCurrentChallenge() {
+        this.currentChallenge.toggleCheck();
+
+        remove(this.bottomPanel);
+        remove(this.mainPanelTopBar);
+        remove(this.currentChallengeCard);
+
+        addBottomPanel();
+        addMainPanelTopBar();
+        addCurrentChallengeCard();
+
+        new Updater(this);
+    }
+
+    public void toggleCheckElaboratedMiniChallenge(int index) {
+        this.currentChallenge.getElaboratedMiniChallenges().getChallenges().get(index).toggleCheck();
+
+        remove(this.bottomPanel);
+        remove(this.currentChallengeCard);
+
+        addBottomPanel();
+        addCurrentChallengeCard();
+
+        new Updater(this.bottomPanel);
+        new Updater(this.currentChallengeCard);
     }
 }

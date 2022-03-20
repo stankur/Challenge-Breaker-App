@@ -88,4 +88,14 @@ public class FramePanel extends JPanel {
         new Updater(this.mainPanel);
     }
 
+    public void requestExitCurrentChallenge() {
+        this.layerNavigator.exitCurrentLayer();
+
+        remove(this.mainPanel);
+
+        addMainPanel();
+
+        new Updater(this.mainPanel);
+    }
+
 }

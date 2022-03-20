@@ -1,17 +1,19 @@
 package ui.views.mainpanel.challengecardpanel;
 
 import ui.fomattingdata.FormattingData;
+import ui.views.CheckListener;
 import ui.views.reusables.HeaderBar;
 import ui.views.reusables.SquareButton;
 
-public class CurrentChallengeHeader extends HeaderBar {
+public class CurrentChallengeHeader extends HeaderBar implements CheckListener {
     private FormattingData formattingData;
     private CurrentChallengeCard card;
 
     public CurrentChallengeHeader(FormattingData formattingData,
                                   CurrentChallengeCard card,
-                                  String challengeName) {
-        super(formattingData, challengeName);
+                                  String challengeName,
+                                  boolean isChecked) {
+        super(formattingData, challengeName, card, -1, isChecked);
 
         this.formattingData = formattingData;
         this.card = card;
@@ -39,6 +41,15 @@ public class CurrentChallengeHeader extends HeaderBar {
 
     public void requestEditCurrentChallenge(String newName, String newDescription) {
         this.card.requestEditChallenge(newName, newDescription);
+    }
+
+    public void requestExitCurrentChallenge() {
+        this.card.requestExitCurrentChallenge();
+    }
+
+    @Override
+    public void toggleCheck(int index) {
+        this.card.toggleCheck(-1);
     }
 
 }

@@ -24,10 +24,21 @@ public class LayerNavigator {
 
     public void stepInto(int elaboratedMiniChallengeIndex) {
         this.visitedLayers.add(this.currentChallenge);
-        System.out.println("requested index : " + elaboratedMiniChallengeIndex + "\n");
-        System.out.println("MEC: " + this.currentChallenge.getElaboratedMiniChallenges().getChallenges());
         this.currentChallenge = this.currentChallenge.getElaboratedMiniChallenges().getChallenges()
                 .get(elaboratedMiniChallengeIndex);
+    }
+
+    public void exitCurrentLayer() {
+        int lastIndex = this.visitedLayers.size() - 1;
+
+        if (lastIndex < 0) {
+            System.out.println("this is the outermost branch; could not exit further");
+        } else {
+            lastIndex = this.visitedLayers.size() - 1;
+            this.currentChallenge = this.visitedLayers.get(lastIndex);
+            this.visitedLayers.remove(lastIndex);
+        }
+
     }
 
 }

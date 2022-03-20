@@ -15,6 +15,6 @@ public class ExitButton extends SquareButton {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println("you requested to exit");
+        this.header.requestExitCurrentChallenge();
     }
 }

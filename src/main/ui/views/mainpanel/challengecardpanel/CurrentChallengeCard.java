@@ -1,15 +1,17 @@
 package ui.views.mainpanel.challengecardpanel;
 
 import ui.fomattingdata.FormattingData;
+import ui.views.CheckListener;
 import ui.views.mainpanel.MainPanel;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class CurrentChallengeCard extends JPanel {
+public class CurrentChallengeCard extends JPanel implements CheckListener {
     FormattingData formattingData;
     String name;
     String description;
+    boolean isChecked;
     MainPanel mainPanel;
 
     JPanel cardPanel;
@@ -18,13 +20,15 @@ public class CurrentChallengeCard extends JPanel {
             FormattingData formattingData,
             MainPanel mainPanel,
             String name,
-            String description
+            String description,
+            boolean isChecked
     ) {
         super();
 
         this.formattingData = formattingData;
         this.name = name;
         this.description = description;
+        this.isChecked = isChecked;
         this.mainPanel = mainPanel;
 
         setPreferredSize(new Dimension(
@@ -62,7 +66,8 @@ public class CurrentChallengeCard extends JPanel {
         panel.add(new CurrentChallengeHeader(
                 this.formattingData,
                 this,
-                this.name), BorderLayout.NORTH);
+                this.name,
+                this.isChecked), BorderLayout.NORTH);
         panel.add(createDescriptionPanel(), BorderLayout.SOUTH);
     }
 
@@ -100,5 +105,14 @@ public class CurrentChallengeCard extends JPanel {
 
     public void requestEditChallenge(String newName, String newDesc) {
         this.mainPanel.requestEditChallenge(newName, newDesc);
+    }
+
+    public void requestExitCurrentChallenge() {
+        this.mainPanel.requestExitCurrentChallenge();
+    }
+
+    @Override
+    public void toggleCheck(int index) {
+        this.mainPanel.toggleCheckCurrentChallenge();
     }
 }

@@ -1,6 +1,8 @@
 package ui.views.mainpanel.minichallengesarea.minichallengespanel;
 
+import model.Challenge;
 import ui.fomattingdata.FormattingData;
+import ui.views.CheckListener;
 import ui.views.mainpanel.MainPanel;
 import ui.views.reusables.HeaderBar;
 
@@ -8,18 +10,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-public class MiniChallenges extends JScrollPane {
+public class MiniChallenges extends JScrollPane implements CheckListener {
     FormattingData formattingData;
     int cardWidth;
-    List<String> challengeNames;
+    List<Challenge> challenges;
     MainPanel mainPanel;
 
 
-    public MiniChallenges(FormattingData formattingData, MainPanel mainPanel, List<String> challengeNames) {
+    public MiniChallenges(FormattingData formattingData, MainPanel mainPanel, List<Challenge> challenges) {
         super();
 
         this.formattingData = formattingData;
-        this.challengeNames = challengeNames;
+        this.challenges = challenges;
         this.mainPanel = mainPanel;
         this.cardWidth = this.formattingData.getMainPanelWidth() - 2 * this.formattingData.getSmallGap();
 
@@ -47,7 +49,7 @@ public class MiniChallenges extends JScrollPane {
     private JPanel miniChallengesPanel() {
         JPanel panel = new JPanel();
 
-        int numberOfMiniChallenges = this.challengeNames.size();
+        int numberOfMiniChallenges = this.challenges.size();
 
         int borderedMiniChallengeBarHeight = this.formattingData.getSquareButtonSize()
                 + 3 * this.formattingData.getSmallGap();
@@ -67,8 +69,9 @@ public class MiniChallenges extends JScrollPane {
         panel.setBackground(this.formattingData.getMainBackground());
 
         for (int i = 0; i < numberOfMiniChallenges; i++) {
+            Challenge challenge = this.challenges.get(i);
             HeaderBar miniChallengeBar = new MiniChallengeHeader(
-                    this.formattingData, this, challengeNames.get(i), i);
+                    this.formattingData, this, challenge.getName(), i, challenge.isChecked());
 
             miniChallengeBar.setBounds(this.formattingData.getSmallGap(), i * borderedMiniChallengeBarHeight,
                     miniChallengeBar.getHeaderWidth(), miniChallengeBar.getHeaderHeight());
@@ -84,7 +87,7 @@ public class MiniChallenges extends JScrollPane {
     }
 
     public void requestRearrange(int oldIndex, int newIndex) {
-        int challengeNamesSize = this.challengeNames.size();
+        int challengeNamesSize = this.challenges.size();
         int max = challengeNamesSize - 1;
         int min = 0;
 
@@ -100,5 +103,10 @@ public class MiniChallenges extends JScrollPane {
 
     public void requestStepInto(int miniElaboratedChallengeIndex) {
         this.mainPanel.requestStepInto(miniElaboratedChallengeIndex);
+    }
+
+    @Override
+    public void toggleCheck(int index) {
+        this.mainPanel.toggleCheckElaboratedMiniChallenge(index);
     }
 }

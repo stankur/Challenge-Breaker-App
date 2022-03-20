@@ -1,21 +1,31 @@
 package ui.views.reusables;
 
 import ui.fomattingdata.FormattingData;
+import ui.views.CheckListener;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
 
 public class HeaderBar extends JPanel {
     FormattingData formattingData;
     String title;
     JLabel challengeName;
+    CheckListener checkListener;
+    int index;
+    boolean isChecked;
 
-    public HeaderBar(FormattingData formattingData, String title) {
+    public HeaderBar(FormattingData formattingData,
+                     String title,
+                     CheckListener checkListener, int index, boolean isChecked) {
         super();
 
         this.formattingData = formattingData;
 
         this.title = title;
+        this.checkListener = checkListener;
+        this.index = index;
+        this.isChecked = isChecked;
 
         setPreferredSize(new Dimension(
                 this.formattingData.getCardWidth(),
@@ -53,8 +63,21 @@ public class HeaderBar extends JPanel {
         return challengeName;
     }
 
+    private String resolveCheck() {
+        if (this.isChecked) {
+            return "◼";
+        } else {
+            return " ";
+        }
+    }
+
     private SquareButton createCheckBox() {
-        return new SquareButton(this.formattingData, "◼");
+        return new SquareButton(this.formattingData, resolveCheck()) {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                checkListener.toggleCheck(index);
+            }
+        };
     }
 
 
