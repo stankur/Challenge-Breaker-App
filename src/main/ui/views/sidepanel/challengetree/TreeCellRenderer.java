@@ -1,4 +1,4 @@
-package ui;
+package ui.views.sidepanel.challengetree;
 
 import ui.fomattingdata.FormattingData;
 import ui.fomattingdata.Theme;

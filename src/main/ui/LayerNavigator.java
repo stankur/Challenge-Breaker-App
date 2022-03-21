@@ -41,4 +41,9 @@ public class LayerNavigator {
 
     }
 
+    public void changeToLayer(List<Challenge> visitedLayers, Challenge currentChallenge) {
+        this.visitedLayers = visitedLayers;
+        this.currentChallenge = currentChallenge;
+    }
+
 }

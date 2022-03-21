@@ -92,32 +92,30 @@ public class MainPanel extends JPanel {
     }
 
     public void requestRemoveChallenge(int index) {
-        Challenge challengeToBeRemoved = this.currentChallenge.getElaboratedMiniChallenges().getChallenges().get(index);
-        this.currentChallenge.removeElaboratedMiniChallenge(challengeToBeRemoved);
+        this.framePanel.requestRemoveChallenge(index);
 
         remove(this.bottomPanel);
         addBottomPanel();
 
-        new Updater(this);
+        new Updater(this.bottomPanel);
     }
 
     public void requestRearrange(int oldIndex, int newIndex) {
-        this.currentChallenge.changePosition(oldIndex, newIndex);
+        this.framePanel.requestRearrange(oldIndex, newIndex);
 
         remove(this.bottomPanel);
         addBottomPanel();
 
-        new Updater(this);
+        new Updater(this.bottomPanel);
     }
 
     public void requestEditChallenge(String newName, String newDesc) {
-        this.currentChallenge.editName(newName);
-        this.currentChallenge.editDescription(newDesc);
+        this.framePanel.requestEditChallenge(newName, newDesc);
 
         remove(this.currentChallengeCard);
         addCurrentChallengeCard();
 
-        new Updater(this);
+        new Updater(this.currentChallengeCard);
     }
 
     public void requestStepInto(int miniElaboratedChallengeIndex) {

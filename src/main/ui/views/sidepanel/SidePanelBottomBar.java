@@ -5,6 +5,7 @@ import ui.views.reusables.SquareButton;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
 
 public class SidePanelBottomBar extends JPanel {
     private FormattingData formattingData;
@@ -22,21 +23,43 @@ public class SidePanelBottomBar extends JPanel {
         );
         setBackground(this.formattingData.getSidePanelBackground());
 
-        SquareButton saveButton = new SquareButton(this.formattingData, "↓");
-        SquareButton loadButton = new SquareButton(this.formattingData, "↑");
+        setLayout(null);
+
+        addSaveButton();
+        addLoadButton();
+    }
+
+    private void addSaveButton() {
+        SquareButton saveButton = new SquareButton(this.formattingData, "↓") {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                sidePanel.requestSave();
+            }
+        };
 
         saveButton.setLocation(
                 this.formattingData.getSmallGap(),
                 this.formattingData.getSmallGap()
         );
+
+        add(saveButton);
+    }
+
+    private void addLoadButton() {
+        SquareButton loadButton = new SquareButton(this.formattingData, "↑") {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                sidePanel.requestLoad();
+            }
+        };
+
         loadButton.setLocation(
                 this.formattingData.getSquareButtonSize() + 2 * this.formattingData.getSmallGap(),
                 this.formattingData.getSmallGap()
         );
 
-        setLayout(null);
-        add(saveButton);
         add(loadButton);
+
 
     }
 }

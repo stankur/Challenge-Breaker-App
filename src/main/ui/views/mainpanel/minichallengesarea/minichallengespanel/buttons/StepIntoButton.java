@@ -1,6 +1,7 @@
-package ui.views.mainpanel.minichallengesarea.minichallengespanel;
+package ui.views.mainpanel.minichallengesarea.minichallengespanel.buttons;
 
 import ui.fomattingdata.FormattingData;
+import ui.views.mainpanel.minichallengesarea.minichallengespanel.MiniChallengeHeader;
 import ui.views.reusables.SquareButton;
 
 import java.awt.event.MouseEvent;

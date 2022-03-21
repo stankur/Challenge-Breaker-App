@@ -2,6 +2,9 @@ package ui.views.mainpanel.challengecardpanel;
 
 import ui.fomattingdata.FormattingData;
 import ui.views.CheckListener;
+import ui.views.mainpanel.challengecardpanel.buttons.AddButton;
+import ui.views.mainpanel.challengecardpanel.buttons.EditButton;
+import ui.views.mainpanel.challengecardpanel.buttons.ExitButton;
 import ui.views.reusables.HeaderBar;
 import ui.views.reusables.SquareButton;
 

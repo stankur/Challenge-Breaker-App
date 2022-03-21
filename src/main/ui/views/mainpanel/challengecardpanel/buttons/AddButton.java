@@ -1,6 +1,7 @@
-package ui.views.mainpanel.challengecardpanel;
+package ui.views.mainpanel.challengecardpanel.buttons;
 
 import ui.fomattingdata.FormattingData;
+import ui.views.mainpanel.challengecardpanel.CurrentChallengeHeader;
 import ui.views.reusables.SquareButton;
 
 import java.awt.event.MouseEvent;

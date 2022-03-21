@@ -78,6 +78,38 @@ public class FramePanel extends JPanel {
         new Updater(this.mainPanel);
     }
 
+    public void requestRemoveChallenge(int index) {
+        Challenge challengeToBeRemoved = this.layerNavigator.getCurrentChallenge().getElaboratedMiniChallenges()
+                .getChallenges().get(index);
+        this.layerNavigator.getCurrentChallenge().removeElaboratedMiniChallenge(challengeToBeRemoved);
+
+        remove(this.sidePanel);
+
+        addSidePanel();
+
+        new Updater(this.sidePanel);
+    }
+
+    public void requestRearrange(int oldIndex, int newIndex) {
+        this.layerNavigator.getCurrentChallenge().changePosition(oldIndex, newIndex);
+
+        remove(this.sidePanel);
+
+        addSidePanel();
+
+        new Updater(this.sidePanel);
+    }
+
+    public void requestEditChallenge(String newName, String newDesc) {
+        this.layerNavigator.getCurrentChallenge().editName(newName);
+        this.layerNavigator.getCurrentChallenge().editDescription(newDesc);
+
+        remove(this.sidePanel);
+        addSidePanel();
+
+        new Updater(this.sidePanel);
+    }
+
     public void requestStepInto(int elaboratedMiniChallengeIndex) {
         this.layerNavigator.stepInto(elaboratedMiniChallengeIndex);
 
@@ -96,6 +128,14 @@ public class FramePanel extends JPanel {
         addMainPanel();
 
         new Updater(this.mainPanel);
+    }
+
+    public void requestLoad() {
+        this.mainFrame.requestLoad();
+    }
+
+    public void requestSave() {
+        this.mainFrame.requestSave();
     }
 
 }
