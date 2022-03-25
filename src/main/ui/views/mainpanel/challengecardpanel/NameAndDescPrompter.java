@@ -3,7 +3,6 @@ package ui.views.mainpanel.challengecardpanel;
 import ui.fomattingdata.FormattingData;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class NameAndDescPrompter extends JFrame {
     private FormattingData formattingData;

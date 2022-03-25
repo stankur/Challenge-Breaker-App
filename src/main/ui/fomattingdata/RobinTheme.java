@@ -21,19 +21,19 @@ public class RobinTheme extends Theme {
 
     // EFFECTS: constructs a theme object with values assigned according to the visuals of a robin theme
     public RobinTheme() {
-        mainBackground = new Color(44, 44, 44);
-        mainTopBarBackground = new Color(81, 76, 76);
+        mainBackground = new Color(37, 37, 37);
+        mainTopBarBackground = new Color(176, 171, 99);
 
         sidePanelBackground = new Color(74, 114, 88);
         sidePanelTopBarBackground = new Color(74, 136, 89);
 
         cardBackground = new Color(154, 69, 73);
-        buttonBackground = new Color(44, 44, 44);
+        buttonBackground = new Color(50, 50, 50);
 
-        buttonOnHoverBackground = new Color(58, 55, 55);
+        buttonOnHoverBackground = new Color(65, 64, 64);
 
         symbolColor = new Color(190, 190, 130);
-        textColor = new Color(204, 204, 204);
+        textColor = new Color(222, 225, 222);
     }
 
     // EFFECTS: returns main background color

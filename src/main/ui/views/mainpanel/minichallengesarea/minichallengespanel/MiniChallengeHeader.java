@@ -1,7 +1,7 @@
 package ui.views.mainpanel.minichallengesarea.minichallengespanel;
 
 import ui.fomattingdata.FormattingData;
-import ui.views.mainpanel.minichallengesarea.minichallengespanel.buttons.RearrangeButton;
+import ui.views.mainpanel.minichallengesarea.minichallengespanel.buttons.rearrangebutton.RearrangeButton;
 import ui.views.mainpanel.minichallengesarea.minichallengespanel.buttons.RemoveButton;
 import ui.views.mainpanel.minichallengesarea.minichallengespanel.buttons.StepIntoButton;
 import ui.views.reusables.HeaderBar;
