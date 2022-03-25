@@ -6,10 +6,12 @@ import ui.views.mainpanel.minichallengesarea.minichallengespanel.buttons.RemoveB
 import ui.views.mainpanel.minichallengesarea.minichallengespanel.buttons.StepIntoButton;
 import ui.views.reusables.HeaderBar;
 
+// represents a mini challenge header bar
 public class MiniChallengeHeader extends HeaderBar {
     private MiniChallenges miniChallenges;
     int index;
 
+    // EFFECTS: constructs a mini challenge header with given formatting data and mini challenges
     public MiniChallengeHeader(FormattingData formattingData, MiniChallenges miniChallenges,
                                 String challengeName, int index, boolean isChecked) {
         super(formattingData, challengeName, miniChallenges, index, isChecked);
@@ -30,14 +32,20 @@ public class MiniChallengeHeader extends HeaderBar {
         add(stepIntoButton);
     }
 
+    // MODIFIES: this
+    // EFFECTS: requests mini challenges to remove challenge of index this.index
     public void requestRemoveChallenge() {
         this.miniChallenges.requestRemoveChallenge(this.index);
     }
 
+    // MODIFIES: this
+    // EFFECTS: requests mini challenges to rearrange mini challenge of index this.index to newIndex
     public void requestMoveTo(int newIndex) {
         this.miniChallenges.requestRearrange(this.index, newIndex);
     }
 
+    // MODIFIES: this
+    // EFFECTS: requests mini challenges to step into challenge with index of this.index
     public void requestStepIntoMiniChallenge() {
         this.miniChallenges.requestStepInto(this.index);
     }

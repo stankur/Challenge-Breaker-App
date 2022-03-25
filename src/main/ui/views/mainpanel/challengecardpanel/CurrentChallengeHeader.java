@@ -8,10 +8,13 @@ import ui.views.mainpanel.challengecardpanel.buttons.ExitButton;
 import ui.views.reusables.HeaderBar;
 import ui.views.reusables.SquareButton;
 
+// represents a header bar of current challenge
 public class CurrentChallengeHeader extends HeaderBar implements CheckListener {
     private FormattingData formattingData;
     private CurrentChallengeCard card;
 
+    // EFFECTS: constructs a new current challenge header with given formatting data,
+    //          reference to given card, given name and checked state and of index -1
     public CurrentChallengeHeader(FormattingData formattingData,
                                   CurrentChallengeCard card,
                                   String challengeName,
@@ -38,10 +41,15 @@ public class CurrentChallengeHeader extends HeaderBar implements CheckListener {
         add(edit);
     }
 
+    // MODIFIES: this
+    // EFFECTS: requests card to add challenge with given name and description
     public void requestAddChallenge(String name, String description) {
         this.card.requestAddChallenge(name, description);
     }
 
+    // MODIFIES: this
+    // EFFECTS: requests card to edit current challenge to a challenge with given new name and given
+    //          new description
     public void requestEditCurrentChallenge(String newName, String newDescription) {
         this.card.requestEditChallenge(newName, newDescription);
     }

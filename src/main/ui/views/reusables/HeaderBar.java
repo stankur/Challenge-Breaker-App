@@ -7,14 +7,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
+// represents a header bar
 public class HeaderBar extends JPanel {
     FormattingData formattingData;
     String title;
-    JLabel challengeName;
     CheckListener checkListener;
     int index;
     boolean isChecked;
 
+    // EFFECTS: constructs a header bar with given formatting data, of title of given title,
+    //          reference to given checkListener, of index of given index, and of checked state of given
+    //          checked state
     public HeaderBar(FormattingData formattingData,
                      String title,
                      CheckListener checkListener, int index, boolean isChecked) {
@@ -42,10 +45,9 @@ public class HeaderBar extends JPanel {
 
         add(checkBox);
         add(createNameLabel());
-
-
     }
 
+    // EFFECTS: returns a label of the name of the challenge with appropriate formatting
     private JLabel createNameLabel() {
         JLabel challengeName = new JLabel();
         challengeName.setText(this.title);
@@ -63,6 +65,7 @@ public class HeaderBar extends JPanel {
         return challengeName;
     }
 
+    // EFFECTS: returns the symbol to be used inside the checked box depending on this' checked state
     private String resolveCheck() {
         if (this.isChecked) {
             return "◼";
@@ -71,6 +74,7 @@ public class HeaderBar extends JPanel {
         }
     }
 
+    // EFFECTS: returns a checkbox
     private SquareButton createCheckBox() {
         return new SquareButton(this.formattingData, resolveCheck(), null) {
             @Override

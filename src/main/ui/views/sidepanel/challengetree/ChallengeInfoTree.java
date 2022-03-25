@@ -1,15 +1,17 @@
 package ui.views.sidepanel.challengetree;
 
 import model.Challenge;
-import ui.views.sidepanel.challengetree.ChallengeInfo;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.util.ArrayList;
 import java.util.List;
 
+// represents a challenge information tree
 public class ChallengeInfoTree extends DefaultMutableTreeNode {
     private ChallengeInfo challengeInfo;
 
+    // REQUIRES: challenge info must be main challenge
+    // EFFECTS: constructs a challenge info tree from given challenge info
     public ChallengeInfoTree(ChallengeInfo challengeInfo) {
         super(challengeInfo);
 
@@ -34,6 +36,8 @@ public class ChallengeInfoTree extends DefaultMutableTreeNode {
         }
     }
 
+    // EFFECTS: returns a list of default mutable trees with userObject of challenge info of mini elaborated challenges
+    //          of the challenge in given challenge info
     private List<DefaultMutableTreeNode> createMiniChallengesNodes(ChallengeInfo challengeInfo) {
 
         List<DefaultMutableTreeNode> nodes = new ArrayList<>();

@@ -6,9 +6,11 @@ import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import java.awt.*;
 
+// represents a tree cell renderer
 public class TreeCellRenderer extends DefaultTreeCellRenderer {
     private FormattingData formattingData;
 
+    // EFFECTS: constructs a tree cell renderer
     public TreeCellRenderer() {
         super();
         // code from:
@@ -20,10 +22,13 @@ public class TreeCellRenderer extends DefaultTreeCellRenderer {
         UIManager.put("Tree.expandedIcon", new EmptyTreeIcon());
     }
 
+    // MODIFIES: this
+    // EFFECTS: assigns given formatting data to this.formattingData
     public void assignFormattingData(FormattingData formattingData) {
         this.formattingData = formattingData;
     }
 
+    // EFFECTS: returns tree cell renderer label
     @Override
     public Component getTreeCellRendererComponent(JTree tree, Object value,
                                                   boolean sel, boolean exp, boolean leaf, int row, boolean hasFocus) {

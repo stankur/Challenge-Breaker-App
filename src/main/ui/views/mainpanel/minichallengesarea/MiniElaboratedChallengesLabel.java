@@ -5,9 +5,11 @@ import ui.fomattingdata.FormattingData;
 import javax.swing.*;
 import java.awt.*;
 
+// represents a panel elaborated challenge label panel
 public class MiniElaboratedChallengesLabel extends JPanel {
     private FormattingData formattingData;
 
+    // EFFECTS: constructs a new mini elaborated challenges label with given formatting data
     public MiniElaboratedChallengesLabel(FormattingData formattingData) {
         super();
 

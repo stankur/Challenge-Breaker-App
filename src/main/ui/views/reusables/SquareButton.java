@@ -7,10 +7,12 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+// represents a square button
 public class SquareButton extends JPanel implements MouseListener {
     private FormattingData formattingData;
     private String symbol;
 
+    // EFFECTS: constructs a square button with given formatting data, symbol, and image icon
     public SquareButton(FormattingData formattingData, String symbol, ImageIcon imageIcon) {
         super();
 
@@ -49,6 +51,8 @@ public class SquareButton extends JPanel implements MouseListener {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets background to button on hover background and re-render
     @Override
     public void mouseEntered(MouseEvent e) {
         setBackground(this.formattingData.getButtonOnHoverBackground());
@@ -56,6 +60,8 @@ public class SquareButton extends JPanel implements MouseListener {
         revalidate();
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets background to normal button background
     @Override
     public void mouseExited(MouseEvent e) {
         setBackground(this.formattingData.getButtonBackground());

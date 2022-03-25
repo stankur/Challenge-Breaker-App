@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
+// represents a new position prompter panel
 public class NewPositionPrompterPanel extends JPanel {
     private FormattingData formattingData;
     private NewPositionPrompterListener listener;
@@ -14,6 +15,8 @@ public class NewPositionPrompterPanel extends JPanel {
 
     private int width;
 
+    // EFFECTS: constructs a new position prompter panel with given formatting data
+    //          and reference to listener
     public NewPositionPrompterPanel(FormattingData formattingData, NewPositionPrompterListener listener) {
         super();
 
@@ -34,6 +37,8 @@ public class NewPositionPrompterPanel extends JPanel {
         addSubmitButton();
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds a new position label to this panel
     private void addNewPositionLabel() {
 
         JLabel label = new JLabel();
@@ -53,6 +58,8 @@ public class NewPositionPrompterPanel extends JPanel {
         add(label);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds a new position field to this panel
     private void addNewPositionField() {
         JTextField newPositionField = new JTextField();
 
@@ -79,6 +86,8 @@ public class NewPositionPrompterPanel extends JPanel {
         add(this.newPositionField);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds a submit button to this panel
     private void addSubmitButton() {
         SquareButton submitButton = new SquareButton(this.formattingData, "↕", null) {
             @Override

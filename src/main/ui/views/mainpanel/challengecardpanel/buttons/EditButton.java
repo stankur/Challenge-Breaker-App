@@ -8,7 +8,6 @@ import ui.views.reusables.SquareButton;
 
 import java.awt.event.MouseEvent;
 import java.util.Objects;
-import java.util.Scanner;
 
 // Represents an edit button
 public class EditButton extends SquareButton implements NameAndDescPrompterListener {

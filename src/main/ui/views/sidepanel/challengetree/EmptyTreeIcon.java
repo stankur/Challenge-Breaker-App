@@ -7,9 +7,11 @@ package ui.views.sidepanel.challengetree;
 import javax.swing.*;
 import java.awt.*;
 
+// represents an empty icon
 public class EmptyTreeIcon implements Icon {
     private static int SIZE = 0;
 
+    // EFFECTS: constructs an empty icon
     public EmptyTreeIcon() {
     }
 
@@ -21,6 +23,7 @@ public class EmptyTreeIcon implements Icon {
         return SIZE;
     }
 
+    // EFFECTS: paints component c at position x and y
     public void paintIcon(Component c, Graphics g, int x, int y) {
         System.out.println(c.getWidth() + " " + c.getHeight() + " " + x + " " + y);
     }

@@ -10,10 +10,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
+// represents bottom bar of side panel
 public class SidePanelBottomBar extends JPanel {
     private FormattingData formattingData;
     private SidePanel sidePanel;
 
+    // EFFECTS: constructs a new side panel bottom bar with given formatting data and reference to side panel
     public SidePanelBottomBar(FormattingData formattingData, SidePanel sidePanel) {
         super();
 
@@ -44,6 +46,8 @@ public class SidePanelBottomBar extends JPanel {
         add(robinButton);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds save button to left part of side panel bottom bar
     private void addSaveButton() {
         SquareButton saveButton = new SquareButton(this.formattingData, "↓", null) {
             @Override
@@ -60,6 +64,7 @@ public class SidePanelBottomBar extends JPanel {
         add(saveButton);
     }
 
+    // EFFECTS: adds load bottom second to the left at the bottom bar
     private void addLoadButton() {
         SquareButton loadButton = new SquareButton(this.formattingData, "↑", null) {
             @Override
@@ -76,6 +81,8 @@ public class SidePanelBottomBar extends JPanel {
         add(loadButton);
     }
 
+    // MODIFIES: this
+    // EFFECTS: requests side panel to change theme into given theme
     public void requestChangeTheme(Theme theme) {
         this.sidePanel.requestChangeTheme(theme);
     }

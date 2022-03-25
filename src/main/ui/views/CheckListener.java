@@ -1,5 +1,7 @@
 package ui.views;
 
+// represents a check listener
 public interface CheckListener {
-    public void toggleCheck(int index);
+    // EFFECTS: toggles checked state at given index
+    void toggleCheck(int index);
 }

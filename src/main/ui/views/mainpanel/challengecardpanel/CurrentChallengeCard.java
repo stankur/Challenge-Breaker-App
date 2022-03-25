@@ -7,6 +7,7 @@ import ui.views.mainpanel.MainPanel;
 import javax.swing.*;
 import java.awt.*;
 
+// represents a card displaying current challenge
 public class CurrentChallengeCard extends JPanel implements CheckListener {
     FormattingData formattingData;
     String name;
@@ -16,6 +17,8 @@ public class CurrentChallengeCard extends JPanel implements CheckListener {
 
     JPanel cardPanel;
 
+    // EFFECTS: constructs a new card with given formatting data, reference to main panel,
+    //          given name, given description, and given checked state
     public CurrentChallengeCard(
             FormattingData formattingData,
             MainPanel mainPanel,
@@ -42,6 +45,8 @@ public class CurrentChallengeCard extends JPanel implements CheckListener {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds a card panel at the proper position
     private void addCardPanel() {
         JPanel panel = new JPanel();
         panel.setLocation(
@@ -56,6 +61,8 @@ public class CurrentChallengeCard extends JPanel implements CheckListener {
 
     }
 
+    // MODIFIES: panel
+    // EFFECTS: sets up the given panel to be a card panel
     private void setupCardPanel(JPanel panel) {
         panel.setSize(new Dimension(
                 this.formattingData.getCardWidth(),
@@ -72,6 +79,8 @@ public class CurrentChallengeCard extends JPanel implements CheckListener {
         panel.add(createDescriptionPanel(), BorderLayout.SOUTH);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds a description panel at the proper position
     private JPanel createDescriptionPanel() {
         JPanel descriptionPanel = new JPanel();
 
@@ -100,18 +109,27 @@ public class CurrentChallengeCard extends JPanel implements CheckListener {
         return descriptionPanel;
     }
 
+    // MODIFIES: this
+    // EFFECTS: requests main panel to add challenge of given name and description
     public void requestAddChallenge(String name, String description) {
         this.mainPanel.requestAddChallenge(name, description);
     }
 
+    // MODIFIES: this
+    // EFFECTS: requests main panel to edit current challenge into a challenge with given new name
+    //          and new description.
     public void requestEditChallenge(String newName, String newDesc) {
         this.mainPanel.requestEditChallenge(newName, newDesc);
     }
 
+    // MODIFIES: this
+    // EFFECTS: requests main panel to exit current challenge
     public void requestExitCurrentChallenge() {
         this.mainPanel.requestExitCurrentChallenge();
     }
 
+    // MODIFIES: this
+    // EFFECTS: requests main panel to toggle the checked state of current challenge
     @Override
     public void toggleCheck(int index) {
         this.mainPanel.toggleCheckCurrentChallenge();

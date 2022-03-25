@@ -6,8 +6,8 @@ import ui.views.reusables.SquareButton;
 
 import java.awt.event.MouseEvent;
 import java.util.Objects;
-import java.util.Scanner;
 
+// represents a rearrange button
 public class RearrangeButton extends SquareButton implements NewPositionPrompterListener {
     private FormattingData formattingData;
     private MiniChallengeHeader miniChallengeHeader;
@@ -21,6 +21,8 @@ public class RearrangeButton extends SquareButton implements NewPositionPrompter
         this.prompter = null;
     }
 
+    // MODIFIES: this
+    // EFFECTS: opens a new position prompter is there is none open yet. otherwise, does nothing
     @Override
     public void mousePressed(MouseEvent e) {
         if (Objects.isNull(this.prompter)) {
@@ -28,6 +30,9 @@ public class RearrangeButton extends SquareButton implements NewPositionPrompter
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: requests mini challenge header to move mini challenge to new index if
+    //          given index is valid. Otherwise, does nothing.
     @Override
     public void changePositionTo(String index) {
         try {

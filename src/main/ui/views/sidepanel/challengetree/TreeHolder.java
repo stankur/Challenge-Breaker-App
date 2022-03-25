@@ -3,9 +3,6 @@ package ui.views.sidepanel.challengetree;
 import model.Challenge;
 import ui.fomattingdata.FormattingData;
 import ui.views.sidepanel.SidePanel;
-import ui.views.sidepanel.challengetree.ChallengeInfo;
-import ui.views.sidepanel.challengetree.ChallengeInfoTree;
-import ui.views.sidepanel.challengetree.TreeCellRenderer;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -14,11 +11,13 @@ import javax.swing.tree.TreePath;
 import java.awt.*;
 import java.util.ArrayList;
 
+// represents a tree holder
 public class TreeHolder extends JPanel {
     private FormattingData formattingData;
     private SidePanel sidePanel;
     private Challenge mainChallenge;
 
+    // EFFECTS: constructs a tree holder with given formatting data, main challenge and reference to side panel
     public TreeHolder(FormattingData formattingData, Challenge mainChallenge, SidePanel sidePanel) {
         super(new GridLayout());
 
@@ -39,6 +38,8 @@ public class TreeHolder extends JPanel {
         addTree();
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds challenge info node tree at expanded state
     private void addTree() {
         JTree tree = new JTree(createChallengeInfoNode()) {
             // code retrieved from
@@ -65,6 +66,7 @@ public class TreeHolder extends JPanel {
         add(tree);
     }
 
+    // EFFECTS: returns a tree cell renderer assigns to this' formatting data
     private TreeCellRenderer createTreeCellRenderer() {
         TreeCellRenderer treeCellRenderer = new TreeCellRenderer();
         treeCellRenderer.assignFormattingData(this.formattingData);
@@ -72,6 +74,7 @@ public class TreeHolder extends JPanel {
         return treeCellRenderer;
     }
 
+    // EFFECTS: returns a new tree of challenge info with main challenge as the root
     private DefaultMutableTreeNode createChallengeInfoNode() {
 
         return new ChallengeInfoTree(new ChallengeInfo(

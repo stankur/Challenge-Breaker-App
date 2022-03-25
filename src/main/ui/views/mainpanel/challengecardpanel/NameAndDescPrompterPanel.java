@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
+// represents a name and description prompter panel
 public class NameAndDescPrompterPanel extends JPanel {
     private FormattingData formattingData;
     private String addSymbol;
@@ -14,6 +15,8 @@ public class NameAndDescPrompterPanel extends JPanel {
     private JTextField nameTextField;
     private JTextArea descriptionTextField;
 
+    // EFFECTS: constructs a name and description prompter panel with given formatting data,
+    //          reference to given listener, and with given add symbol
     public NameAndDescPrompterPanel(FormattingData formattingData,
                                     NameAndDescPrompterListener listener, String addSymbol) {
         super();
@@ -39,6 +42,8 @@ public class NameAndDescPrompterPanel extends JPanel {
         addAddButton();
     }
 
+    // EFFECTS: creates a label of given title with bounds at given x and y positions and of given
+    //          width and height
     private JLabel createLabel(String title, int positionX, int positionY, int width, int height) {
         JLabel label = new JLabel();
 
@@ -58,6 +63,8 @@ public class NameAndDescPrompterPanel extends JPanel {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds label of "Challenge Name:" to panel
     private void addNameLabel() {
         JLabel nameLabel = createLabel(
                 "Challenge Name:",
@@ -68,6 +75,8 @@ public class NameAndDescPrompterPanel extends JPanel {
         add(nameLabel);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds name text field to panel
     private void addNameTextField() {
         JTextField nameTextField = new JTextField();
 
@@ -94,6 +103,8 @@ public class NameAndDescPrompterPanel extends JPanel {
         add(this.nameTextField);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds a label of "Challenge Description:" at appropriate location
     private void addDescriptionLabel() {
         JLabel descriptionLabel = createLabel("Challenge Description:",
                 this.formattingData.getSmallGap(), this.formattingData.getHeaderHeight()
@@ -105,6 +116,8 @@ public class NameAndDescPrompterPanel extends JPanel {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds a description field to this panel
     private void addDescriptionField() {
         JTextArea descriptionField = new JTextArea();
 
@@ -132,6 +145,8 @@ public class NameAndDescPrompterPanel extends JPanel {
         add(this.descriptionTextField);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds an add button with addSymbol to this panel at appropriate location
     private void addAddButton() {
         SquareButton addButton = new SquareButton(this.formattingData, this.addSymbol, null) {
             @Override

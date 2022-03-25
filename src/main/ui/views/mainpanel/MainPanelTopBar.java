@@ -5,13 +5,14 @@ import ui.fomattingdata.FormattingData;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 
+// represents the top bar of main panel
 public class MainPanelTopBar extends JPanel {
     private FormattingData formattingData;
     private List<String> visitedLayers;
 
+    // EFFECTS: constructs a new main panel top bar with given formatting data and visited layers
     public MainPanelTopBar(FormattingData formattingData, List<String> visitedLayers) {
         super();
         this.formattingData = formattingData;
@@ -26,6 +27,7 @@ public class MainPanelTopBar extends JPanel {
         add(visitedLayers());
     }
 
+    // EFFECTS: returns a label with visited layers information
     private JLabel visitedLayers() {
         JLabel description = new JLabel();
 
@@ -46,6 +48,7 @@ public class MainPanelTopBar extends JPanel {
         return description;
     }
 
+    // EFFECTS: returns a string of visited layers names
     private String getVisitedLayersString() {
         int size = this.visitedLayers.size();
 
