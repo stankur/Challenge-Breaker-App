@@ -10,12 +10,12 @@ public class StepIntoButton extends SquareButton {
     private MiniChallengeHeader miniChallengeHeader;
 
     public StepIntoButton(FormattingData formattingData, MiniChallengeHeader miniChallengeHeader) {
-        super(formattingData, "→");
+        super(formattingData, "→", null);
         this.miniChallengeHeader = miniChallengeHeader;
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mousePressed(MouseEvent e) {
         this.miniChallengeHeader.requestStepIntoMiniChallenge();
     }
 }

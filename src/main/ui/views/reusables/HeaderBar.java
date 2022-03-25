@@ -53,7 +53,7 @@ public class HeaderBar extends JPanel {
                 this.formattingData.getSmallGap(),
                 this.formattingData.getCardWidth()
                         - 4 * this.formattingData.getBorderedButtonWidth()
-                        - 3 + this.formattingData.getSmallGap(),
+                        - 2 * this.formattingData.getSmallGap(),
                 this.formattingData.getSquareButtonSize());
         challengeName.setForeground(this.formattingData.getTextColor());
         challengeName.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, this.formattingData.getBigFont()));
@@ -72,9 +72,9 @@ public class HeaderBar extends JPanel {
     }
 
     private SquareButton createCheckBox() {
-        return new SquareButton(this.formattingData, resolveCheck()) {
+        return new SquareButton(this.formattingData, resolveCheck(), null) {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mousePressed(MouseEvent e) {
                 checkListener.toggleCheck(index);
             }
         };

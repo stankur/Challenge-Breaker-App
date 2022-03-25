@@ -8,9 +8,14 @@
             "description": "test",
             "checked": false,
             "elaboratedMiniChallenges": [{
-                "name": "lmao",
+                "name": "lols",
                 "description": "hehe",
-                "checked": false
+                "checked": false,
+                "elaboratedMiniChallenges": [{
+                    "name": "hihi",
+                    "description": "lulul",
+                    "checked": false
+                }]
             }]
         },
         {
@@ -21,6 +26,16 @@
         {
             "name": "test challenge 2",
             "description": "test",
+            "checked": false
+        },
+        {
+            "name": "heheh",
+            "description": "lol",
+            "checked": false
+        },
+        {
+            "name": "new one",
+            "description": "hehe",
             "checked": false
         }
     ]

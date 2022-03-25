@@ -54,5 +54,4 @@ public class CurrentChallengeHeader extends HeaderBar implements CheckListener {
     public void toggleCheck(int index) {
         this.card.toggleCheck(-1);
     }
-
 }

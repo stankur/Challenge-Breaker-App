@@ -4,15 +4,12 @@ import model.Challenge;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 import ui.LayerNavigator;
-import ui.fomattingdata.Constants;
-import ui.fomattingdata.DarkTheme;
-import ui.fomattingdata.FormattingData;
+import ui.fomattingdata.*;
 import ui.views.helpers.Updater;
 
 import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class MainFrame extends JFrame {
     private static final String STORAGE = "./data/storage.json";
@@ -31,7 +28,7 @@ public class MainFrame extends JFrame {
     public MainFrame() {
         super("Challenge Breaker");
 
-        setFormattingData(new FormattingData(new DarkTheme(),new Constants()));
+        setFormattingData(new FormattingData(new RobinTheme(),new Constants()));
         setMainChallenge(new Challenge(
                 "template challenge",
                 "template description"
@@ -84,6 +81,14 @@ public class MainFrame extends JFrame {
         } catch (IOException e) {
             System.out.println(STORAGE + " not found");
         }
+
+        remove(this.framePanel);
+        addFramePanel();
+
+        new Updater(this.framePanel);
+    }
+    public void requestChangeTheme(Theme newTheme) {
+        this.formattingData.changeTheme(newTheme);
 
         remove(this.framePanel);
         addFramePanel();

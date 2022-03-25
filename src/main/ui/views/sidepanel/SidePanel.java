@@ -3,6 +3,7 @@ package ui.views.sidepanel;
 import model.Challenge;
 
 import ui.fomattingdata.FormattingData;
+import ui.fomattingdata.Theme;
 import ui.views.FramePanel;
 import ui.views.sidepanel.challengetree.TreeHolder;
 
@@ -59,5 +60,9 @@ public class SidePanel extends JPanel {
 
     public void requestSave() {
         this.framePanel.requestSave();
+    }
+
+    public void requestChangeTheme(Theme theme) {
+        this.framePanel.requestChangeTheme(theme);
     }
 }

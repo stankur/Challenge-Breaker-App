@@ -3,6 +3,7 @@ package ui.views;
 import model.Challenge;
 import ui.LayerNavigator;
 import ui.fomattingdata.FormattingData;
+import ui.fomattingdata.Theme;
 import ui.views.helpers.Updater;
 import ui.views.mainpanel.MainPanel;
 import ui.views.sidepanel.SidePanel;
@@ -136,6 +137,10 @@ public class FramePanel extends JPanel {
 
     public void requestSave() {
         this.mainFrame.requestSave();
+    }
+
+    public void requestChangeTheme(Theme theme) {
+        this.mainFrame.requestChangeTheme(theme);
     }
 
 }

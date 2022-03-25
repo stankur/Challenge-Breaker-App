@@ -39,6 +39,7 @@ public class CurrentChallengeCard extends JPanel implements CheckListener {
         setLayout(null);
 
         addCardPanel();
+
     }
 
     private void addCardPanel() {

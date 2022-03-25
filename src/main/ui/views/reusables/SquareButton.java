@@ -11,7 +11,7 @@ public class SquareButton extends JPanel implements MouseListener {
     private FormattingData formattingData;
     private String symbol;
 
-    public SquareButton(FormattingData formattingData, String symbol) {
+    public SquareButton(FormattingData formattingData, String symbol, ImageIcon imageIcon) {
         super();
 
         this.formattingData = formattingData;
@@ -19,12 +19,13 @@ public class SquareButton extends JPanel implements MouseListener {
 
         addMouseListener(this);
 
-        setSize(40,40);
+        setSize(this.formattingData.getSquareButtonSize(),this.formattingData.getSquareButtonSize());
         setBackground(this.formattingData.getButtonBackground());
 
         JLabel content = new JLabel();
 
         content.setText(symbol);
+        content.setIcon(imageIcon);
         content.setForeground(this.formattingData.getSymbolColor());
         content.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 27));
         content.setHorizontalAlignment(JLabel.CENTER);

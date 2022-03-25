@@ -11,12 +11,12 @@ public class RearrangeButton extends SquareButton {
     private MiniChallengeHeader miniChallengeHeader;
 
     public RearrangeButton(FormattingData formattingData, MiniChallengeHeader miniChallengeHeader) {
-        super(formattingData, "↕");
+        super(formattingData, "↕", null);
         this.miniChallengeHeader = miniChallengeHeader;
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mousePressed(MouseEvent e) {
         Scanner input = new Scanner(System.in);
 
         System.out.println("new position?");
