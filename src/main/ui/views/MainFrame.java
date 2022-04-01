@@ -1,6 +1,8 @@
 package ui.views;
 
 import model.Challenge;
+import model.Event;
+import model.EventLog;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 import ui.LayerNavigator;
@@ -8,6 +10,8 @@ import ui.fomattingdata.*;
 import ui.views.helpers.Updater;
 
 import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -40,7 +44,18 @@ public class MainFrame extends JFrame {
         this.jsonWriter = new JsonWriter(STORAGE);
         this.jsonReader = new JsonReader(STORAGE);
 
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        // from https://stackoverflow.com/questions/9093448/how-to-capture-a-jframes-close-button-click-event
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                for (Event event: EventLog.getInstance()) {
+                    System.out.println(event.getDescription());
+                    System.out.println("at time: " + event.getDate());
+                    System.out.println("");
+                }
+                System.exit(0);
+            }
+        });
         setResizable(false);
 
         addFramePanel();

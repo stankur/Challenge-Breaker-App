@@ -23,9 +23,8 @@ public class EmptyTreeIcon implements Icon {
         return SIZE;
     }
 
-    // EFFECTS: paints component c at position x and y
+    // EFFECTS: none
     public void paintIcon(Component c, Graphics g, int x, int y) {
-        System.out.println(c.getWidth() + " " + c.getHeight() + " " + x + " " + y);
     }
 
 }

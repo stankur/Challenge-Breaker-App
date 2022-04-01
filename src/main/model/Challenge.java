@@ -34,6 +34,12 @@ public class Challenge implements Writable {
     // EFFECTS: adds given challenge to the end of elaborated mini challenges
     public void addElaboratedMiniChallenge(Challenge challenge) {
         this.elaboratedMiniChallenges.addChallenge(challenge);
+        EventLog.getInstance().logEvent(new Event(
+                "Added Challenge "
+                        + challenge.getName()
+                        + " to mini elaborated challenges Challenges Group of "
+                        + this.getName()
+                ));
     }
 
     // REQUIRES: elaborated mini challenges contains given challenge
@@ -41,6 +47,13 @@ public class Challenge implements Writable {
     // EFFECTS: removes challenge from elaborated mini challenges
     public void removeElaboratedMiniChallenge(Challenge challenge) {
         this.elaboratedMiniChallenges.removeChallenge(challenge);
+        EventLog.getInstance().logEvent(new Event(
+                "Removed Challenge "
+                        + challenge.getName()
+                        + " from mini elaborated challenges Challenges Group of "
+                        + this.getName()
+        ));
+
     }
 
     // REQUIRES: elaborated mini challenges contains given challenge and

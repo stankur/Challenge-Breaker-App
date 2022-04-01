@@ -50,7 +50,6 @@ public class SidePanel extends JPanel {
     // EFFECTS: adds tree holder to the center of this panel
     private void addTreeHolder() {
         this.treeHolder = new TreeHolder(this.formattingData, mainChallenge, this);
-        System.out.println(mainChallenge.getElaboratedMiniChallenges().getChallenges());
 
         add(this.treeHolder, BorderLayout.CENTER);
     }
